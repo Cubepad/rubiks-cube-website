@@ -1,22 +1,6 @@
-.header {
-  height: rem(56px);
-  margin-bottom: rem(120px);
-  background-color: var(--mantine-color-body);
-  padding-left: var(--mantine-spacing-md);
-  padding-right: var(--mantine-spacing-md);
-}
-
-.inner {
-  height: rem(56px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .link {
-  display: block;
   line-height: 1;
-  padding: rem(8px) rem(12px);
+  padding: 0.5rem 1rem;
   border-radius: var(--mantine-radius-md);
   text-decoration: none;
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
@@ -25,11 +9,8 @@
   transition: all 0.15s;
 
   @mixin hover {
-    background-color: light-dark(
-      var(--mantine-color-gray-0),
-      var(--mantine-color-dark-6)
-    );
+    background-color: var(--mantine-color-blue-0);
 
-    color: var(--mantine-color-indigo-6); /* Change this to your desired hover color */
+    color: var(--mantine-color-blue-8); /* Change this to your desired hover color */
   }
 }
