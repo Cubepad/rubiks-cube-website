@@ -4,48 +4,47 @@ import { Container, Text, Group, Button, Box } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 export default function Hero() {
-  const isMobile = useMediaQuery("(max-width: 768px)"); // Media query hook
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <Container
-      size="lg"
+      size="lg"  // Expand to full viewport width
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "space-between",
-        padding: "4rem 2rem",
-        flexDirection: isMobile ? "column" : "row", // Apply column on mobile
-        textAlign: isMobile ? "center" : "left", // Center text on mobile
+        padding: "6rem 2rem",
+        flexDirection: "column",
+        textAlign: "center",
         gap: "2rem",
       }}
     >
       {/* Left side - Text content */}
-      <Box style={{ maxWidth: isMobile ? "100%" : "60%" }}>
-      <Text
-        component="h1"
-        style={{
-          fontSize: isMobile ? "2.75rem" : "4rem",
-          fontWeight: 700,
-          lineHeight: 1.2,
-          letterSpacing: "-0.05em",
-          color: "#000", // Main color
-        }}
-      >
-        A{' '}
+      <Box style={{ maxWidth: isMobile ? "100%" : "75%"}}>  {/* Allow text content to use full width */}
         <Text
-          component="span"
-          inherit
-          variant="gradient"
-          gradient={{ from: "blue", to: "indigo", deg: 90 }}
+          component="h1"
+          style={{
+            fontSize: isMobile ? "2.75rem" : "4.5rem",
+            fontWeight: 700,
+            lineHeight: 1.2,
+            letterSpacing: "-0.05em",
+            color: "#000", // Main color
+          }}
         >
-          fully featured
-        </Text>{' '}
-        Rubik's Cube Guide
-      </Text>
+          A{' '}
+          <Text
+            component="span"
+            inherit
+            variant="gradient"
+            gradient={{ from: "blue", to: "indigo", deg: 90 }}
+          >
+            fully featured
+          </Text>{' '}
+          Rubik's Cube Guide 
+        </Text>
 
         <Text
           style={{
-            fontSize: "1.25rem",
+            fontSize: isMobile ? "1.25rem" : "1.5rem",
             fontWeight: 400,
             color: "#555",
             marginTop: "1rem",
@@ -58,7 +57,7 @@ export default function Hero() {
         <Group
           style={{
             marginTop: "2rem",
-            justifyContent: isMobile ? "center" : "left",
+            justifyContent: "center",
           }}
         >
           <Button
@@ -76,10 +75,11 @@ export default function Hero() {
       {/* Right side - Placeholder div */}
       <Box
         style={{
-          width: isMobile ? "100%" : "40%", // Adjust width for mobile view
+          width: isMobile ? "100%" : "60%", // Increased width for larger screens
           height: "300px",
           borderRadius: "16px",
           backgroundColor: "#d9e2ec", // Light placeholder color
+          marginTop: "2rem", // Add spacing below text
         }}
       />
     </Container>
