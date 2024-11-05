@@ -29,8 +29,7 @@ export function HeaderSimple() {
       }}
       style={{
         textDecoration: "none",
-        color: "inherit", // Keep color consistent for all links
-        fontWeight: 500,   // Remove bold effect
+        fontWeight: isMobile ? 700 : 500,   // Remove bold effect
         fontSize: isMobile ? "1.5rem" : "1rem",
       }}
     >

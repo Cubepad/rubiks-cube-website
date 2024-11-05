@@ -22,12 +22,14 @@
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
   font-size: var(--mantine-font-size-md);
   font-weight: 500;
-  transition: all 0.3s;
+  transition: all 0.15s;
 
   @mixin hover {
     background-color: light-dark(
       var(--mantine-color-gray-0),
       var(--mantine-color-dark-6)
     );
+
+    color: var(--mantine-color-indigo-6); /* Change this to your desired hover color */
   }
 }
