@@ -4,7 +4,7 @@ import { Container, Text, Button, Box, Title, Flex } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import classes from './Hero.module.css'; // Import CSS module
 
-export default function Hero() {
+export function Hero() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
