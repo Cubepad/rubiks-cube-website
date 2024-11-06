@@ -9,10 +9,11 @@ import "@mantinex/mantine-logo/styles.css";
 import { HeaderSimple } from "./HeaderSimple";
 import Hero from "./Hero";
 import { MantineProvider, AppShell, Container } from "@mantine/core";
+import { Footer } from "./Footer";
 
 export default function App() {
   return (
-    <MantineProvider>
+    <MantineProvider defaultColorScheme="auto">
       <AppShell padding="md">
         {/* Place HeaderSimple outside of AppShell.Header */}
         <Container style={{ paddingBottom: "3.75rem" }}>
@@ -21,6 +22,7 @@ export default function App() {
         <AppShell.Main>
           <Hero />
         </AppShell.Main>
+        <Footer />
       </AppShell>
     </MantineProvider>
   );
