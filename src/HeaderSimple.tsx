@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Burger, Container, Flex, Button } from "@mantine/core";
+import { Burger, Container, Flex, Button, ActionIcon, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import { MantineLogo } from "@mantinex/mantine-logo";
-import classes from './HeaderSimple.module.css'; // Import CSS module
+import { IconSun, IconMoon } from '@tabler/icons-react';
+import classes from './HeaderSimple.module.css';
 
 const links = [
   { link: "/Home", label: "Home" },
@@ -15,6 +16,9 @@ export function HeaderSimple() {
   const [opened, { toggle }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
   const isMobile = useMediaQuery("(max-width: 768px)");
+  
+  // Get color scheme functions from Mantine
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   const handleLinkClick = (link: string) => {
     setActive(link);
@@ -73,27 +77,49 @@ export function HeaderSimple() {
           <Flex gap={"sm"}>{items}</Flex>
         )}
 
-        {/* Start Learning Button */}
-        {!isMobile && (
-          <Button
-            size="sm"
-            radius="lg"
-            color="blue"
-            variant="gradient"
-            gradient={{ from: "blue", to: "indigo", deg: 90 }}
-          >
-            Start Learning
-          </Button>
-        )}
+        {/* Theme Toggle and Start Learning Buttons in a Flex Group */}
+        {!isMobile ? (
+          <Flex align="center" gap="sm">
+            <ActionIcon
+              variant="default"
+              onClick={() => toggleColorScheme()}
+              radius="md"
+              title="Toggle color scheme"
+              size="lg"
+            >
+              {colorScheme === "dark" ? <IconSun size={18} /> : <IconMoon size={18} />}
+            </ActionIcon>
 
-        {/* Mobile Burger Menu */}
-        {isMobile && (
-          <Burger
-            opened={opened}
-            onClick={toggle}
-            size="sm"
-            aria-label="Toggle navigation"
-          />
+            <Button
+              size="sm"
+              radius="lg"
+              color="blue"
+              variant="gradient"
+              gradient={{ from: "blue", to: "indigo", deg: 90 }}
+            >
+              Start Learning
+            </Button>
+          </Flex>
+        ) : (
+          // Mobile: Burger and Theme Toggle in a Flex container
+          <Flex align="center" gap="sm">
+            <ActionIcon
+              variant="default"
+              onClick={() => toggleColorScheme()}
+              radius="md"
+              title="Toggle color scheme"
+              size="lg"
+            >
+              {colorScheme === "dark" ? <IconSun size={18} /> : <IconMoon size={18} />}
+            </ActionIcon>
+
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              size="sm"
+              aria-label="Toggle navigation"
+            />
+          </Flex>
         )}
       </Container>
 
