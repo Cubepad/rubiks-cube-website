@@ -1,3 +1,10 @@
+.header {
+  border: light-dark(
+    1px solid var(--mantine-color-gray-3),
+    1px solid var(--mantine-color-dark-4)
+  );
+}
+
 .link {
   line-height: 1;
   padding: 0.5rem 1rem;
@@ -9,8 +16,13 @@
   transition: all 0.15s;
 
   @mixin hover {
-    background-color: var(--mantine-color-blue-0);
+    background-color: light-dark(
+      var(--mantine-color-gray-0),
+      var(--mantine-color-dark-6)
+    );
 
-    color: var(--mantine-color-blue-8); /* Change this to your desired hover color */
+    color: var(
+      --mantine-color-blue-8
+    ); /* Change this to your desired hover color */
   }
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Burger, Container, Button } from "@mantine/core";
+import { Burger, Container, Flex, Button } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import { MantineLogo } from "@mantinex/mantine-logo";
 import classes from './HeaderSimple.module.css'; // Import CSS module
@@ -41,6 +41,7 @@ export function HeaderSimple() {
 
   return (
     <header
+      className={classes.header}
       style={{
         position: "fixed",
         top: "1rem",
@@ -48,7 +49,6 @@ export function HeaderSimple() {
         transform: "translateX(-50%)",
         width: "calc(100% - 2rem)",
         maxWidth: "1280px",
-        border: "1px solid var(--mantine-color-gray-3)",
         borderRadius: "12px",
         zIndex: 1000,
         backgroundColor: "var(--mantine-color-body)",
@@ -70,7 +70,7 @@ export function HeaderSimple() {
 
         {/* Desktop Navigation */}
         {!isMobile && (
-          <div style={{ display: "flex", gap: "1.5rem" }}>{items}</div>
+          <Flex gap={"sm"}>{items}</Flex>
         )}
 
         {/* Start Learning Button */}
@@ -99,12 +99,11 @@ export function HeaderSimple() {
 
       {/* Mobile Expanded Navigation */}
       {isMobile && opened && (
-        <div
+        <Flex
+          direction="column"
+          align="center"
+          gap="xl"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "1.5rem",
             paddingTop: "1.5rem",
           }}
         >
@@ -119,7 +118,7 @@ export function HeaderSimple() {
           >
             Start Learning
           </Button>
-        </div>
+        </Flex>
       )}
     </header>
   );

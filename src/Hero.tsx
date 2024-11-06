@@ -1,7 +1,8 @@
 // Hero.tsx
 
-import { Container, Text, Group, Button, Box } from "@mantine/core";
+import { Container, Text, Button, Box, Title, Flex } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import classes from './Hero.module.css'; // Import CSS module
 
 export default function Hero() {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -20,44 +21,44 @@ export default function Hero() {
     >
       {/* Left side - Text content */}
       <Box style={{ maxWidth: isMobile ? "100%" : "75%"}}>  {/* Allow text content to use full width */}
-        <Text
-          component="h1"
+        <Title
+          className={classes.title}
+          order={1}
+          fw={700}
           style={{
             fontSize: isMobile ? "2.75rem" : "4.5rem",
-            fontWeight: 700,
             lineHeight: 1.2,
             letterSpacing: "-0.05em",
-            color: "#000", // Main color
           }}
         >
-          A{' '}
+          Your{' '}
           <Text
             component="span"
             inherit
             variant="gradient"
             gradient={{ from: "blue", to: "indigo", deg: 90 }}
           >
-            fully featured
+            Landing Pad
           </Text>{' '}
-          Rubik's Cube Guide 
-        </Text>
+          For Rubik's Cube Mastery 
+        </Title>
 
-        <Text
+        <Title
+          order={3}
+          fw={400}
           style={{
             fontSize: isMobile ? "1.25rem" : "1.5rem",
-            fontWeight: 400,
-            color: "#555",
             marginTop: "1rem",
           }}
         >
           Learn to solve the Rubik’s Cube step-by-step with easy-to-follow
           tutorials and tips.
-        </Text>
+        </Title>
 
-        <Group
+        <Flex
+          justify="center"
           style={{
             marginTop: "2rem",
-            justifyContent: "center",
           }}
         >
           <Button
@@ -69,7 +70,7 @@ export default function Hero() {
           >
             Get started
           </Button>
-        </Group>
+        </Flex>
       </Box>
 
       {/* Right side - Placeholder div */}
