@@ -87,10 +87,11 @@ export function HeaderSimple() {
               title="Toggle color scheme"
               size="lg"
             >
-              {colorScheme === "dark" ? <IconSun size={18} /> : <IconMoon size={18} />}
+              {colorScheme === "dark" ? <IconSun size={22} /> : <IconMoon size={22} />}
             </ActionIcon>
 
             <Button
+              component="a"
               size="sm"
               radius="lg"
               color="blue"
