@@ -19,7 +19,7 @@ export default function App() {
         <Container style={{ paddingBottom: "3.75rem" }}>
           <HeaderSimple />
         </Container>
-        <AppShell.Main style={{backgroundColor: "var(--mantine-color-body)", marginBottom: "23rem", boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.1)"}}>
+        <AppShell.Main style={{backgroundColor: "var(--mantine-color-body)", marginBottom: "23rem", boxShadow: "0px 10px 15px rgba(0, 0, 0, 0.1)"}}>
           <Hero />
         </AppShell.Main>
         <AppShell.Footer style={{zIndex: "-1", border: "none"}}>
