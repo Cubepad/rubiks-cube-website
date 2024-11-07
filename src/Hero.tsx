@@ -25,10 +25,10 @@ export function Hero() {
           className={classes.title}
           order={1}
           fw={700}
+          lts="-0.05em"
+          lh={1.2}
           style={{
             fontSize: isMobile ? "2.75rem" : "4.5rem",
-            lineHeight: 1.2,
-            letterSpacing: "-0.05em",
           }}
         >
           Your{' '}
@@ -62,7 +62,7 @@ export function Hero() {
           }}
         >
           <Button
-            size="lg"
+            size="xl"
             radius="lg"
             color="blue"
             variant="gradient"
