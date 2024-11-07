@@ -1,4 +1,4 @@
-import { Text, Container, ActionIcon, Group, rem } from "@mantine/core";
+import { Text, Container, ActionIcon, Group } from "@mantine/core";
 import {
   IconBrandTwitter,
   IconBrandYoutube,
@@ -73,7 +73,7 @@ export function Footer() {
       </Container>
       <Container className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-        © 2024 David Olaniyan. All rights reserved.
+          © 2024 David Olaniyan. All rights reserved.
         </Text>
 
         <Group
@@ -88,10 +88,7 @@ export function Footer() {
             radius="md"
             gradient={{ from: "blue", to: "indigo", deg: 90 }}
           >
-            <IconBrandTwitter
-              style={{ width: rem(18), height: rem(18) }}
-              stroke={1.5}
-            />
+            <IconBrandTwitter size={18} stroke={1.5} />
           </ActionIcon>
           <ActionIcon
             size="lg"
@@ -99,10 +96,7 @@ export function Footer() {
             radius="md"
             gradient={{ from: "blue", to: "indigo", deg: 90 }}
           >
-            <IconBrandYoutube
-              style={{ width: rem(18), height: rem(18) }}
-              stroke={1.5}
-            />
+            <IconBrandYoutube size={18} stroke={1.5} />
           </ActionIcon>
           <ActionIcon
             size="lg"
@@ -110,10 +104,7 @@ export function Footer() {
             radius="md"
             gradient={{ from: "blue", to: "indigo", deg: 90 }}
           >
-            <IconBrandInstagram
-              style={{ width: rem(18), height: rem(18) }}
-              stroke={1.5}
-            />
+            <IconBrandInstagram size={18} stroke={1.5} />
           </ActionIcon>
         </Group>
       </Container>
