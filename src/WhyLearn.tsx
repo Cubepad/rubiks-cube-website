@@ -10,7 +10,7 @@ import {
   Flex,
   Button
 } from "@mantine/core";
-import { IconBrain, IconPuzzle, IconFocusCentered, IconInfoCircle } from "@tabler/icons-react";
+import { IconBrain, IconPuzzle, IconFocusCentered, IconInfoCircle, IconBulb } from "@tabler/icons-react";
 import classes from "./WhyLearn.module.css"; // Import CSS module
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -77,7 +77,7 @@ export function WhyLearn() {
               size={38}
               radius="xl"
             >
-              <IconBrain size={24} />
+              <IconBulb size={24} />
             </ThemeIcon>
             <Title
               order={4}
