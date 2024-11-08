@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Burger, Container, Flex, Button, ActionIcon, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
-import { MantineLogo } from "@mantinex/mantine-logo";
 import { IconSun, IconMoon } from '@tabler/icons-react';
 import classes from './HeaderSimple.module.css';
+import { ThemeLogo } from './ThemeLogo';
 
 const links = [
   { link: "/Home", label: "Home" },
@@ -70,7 +70,7 @@ export function HeaderSimple() {
           height: "4rem",
         }}
       >
-        <MantineLogo size={28} />
+        <ThemeLogo />
 
         {/* Desktop Navigation */}
         {!isMobile && (

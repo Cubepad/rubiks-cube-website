@@ -4,7 +4,7 @@ import {
   IconBrandYoutube,
   IconBrandInstagram,
 } from "@tabler/icons-react";
-import { MantineLogo } from "@mantinex/mantine-logo";
+import { ThemeLogo } from './ThemeLogo';
 import classes from "./Footer.module.css";
 
 const data = [
@@ -63,7 +63,7 @@ export function Footer() {
     <div className={classes.footer}>
       <Container className={classes.inner}>
         <div className={classes.logo}>
-          <MantineLogo size={30} />
+          <ThemeLogo />
           <Text size="xs" c="dimmed" className={classes.description}>
             Learn to solve the Rubik's Cube from beginner to advanced. Free
             tutorials, tips, and algorithms for speedcubing.
