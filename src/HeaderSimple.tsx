@@ -53,7 +53,7 @@ export function HeaderSimple() {
         transform: "translateX(-50%)",
         width: "calc(100% - 2rem)",
         maxWidth: "1280px",
-        borderRadius: "12px",
+        borderRadius: "20px",
         zIndex: 1000,
         backgroundColor: "var(--mantine-color-body)",
         height: isMobile && opened ? "95%" : "4rem",
