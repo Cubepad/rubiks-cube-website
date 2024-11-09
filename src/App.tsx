@@ -11,6 +11,7 @@ import { Hero } from "./Hero";
 import { MantineProvider, AppShell, Container } from "@mantine/core";
 import { Footer } from "./Footer";
 import { WhyLearn } from "./WhyLearn"
+import { RubiksHistory } from "./RubiksHistory"
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <AppShell.Main style={{backgroundColor: "var(--mantine-color-body)", marginBottom: "23rem", boxShadow: "0px 10px 15px rgba(0, 0, 0, 0.1)"}}>
           <Hero />
           <WhyLearn />
+          <RubiksHistory />
         </AppShell.Main>
         <AppShell.Footer style={{zIndex: "-1", border: "none"}}>
           <Footer />
