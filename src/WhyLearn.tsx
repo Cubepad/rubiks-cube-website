@@ -8,9 +8,15 @@ import {
   Box,
   ThemeIcon,
   Flex,
-  Button
+  Button,
 } from "@mantine/core";
-import { IconBrain, IconPuzzle, IconFocusCentered, IconInfoCircle, IconBulb } from "@tabler/icons-react";
+import {
+  IconBrain,
+  IconPuzzle,
+  IconFocusCentered,
+  IconInfoCircle,
+  IconBulb,
+} from "@tabler/icons-react";
 import classes from "./WhyLearn.module.css"; // Import CSS module
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -31,7 +37,7 @@ export function WhyLearn() {
       >
         Why Learn to Solve the Rubik's Cube?
       </Title>
-      <Text ta="center" size="lg"  mx="auto" mb="xl" maw={700}>
+      <Text ta="center" size="lg" mx="auto" mb="xl" maw={700}>
         Learning to solve the Rubik's Cube isn't just fun—it strengthens your
         mind, improves memory, and boosts problem-solving skills. Here's a quick
         look at some benefits!
@@ -65,7 +71,7 @@ export function WhyLearn() {
               Cognitive Skills
             </Title>
           </Flex>
-          <Text >Boosts analytical thinking and coordination.</Text>
+          <Text>Boosts analytical thinking and coordination.</Text>
         </Box>
 
         {/* Benefit 2 */}
@@ -90,7 +96,7 @@ export function WhyLearn() {
               Memory
             </Title>
           </Flex>
-          <Text >Enhances memory and spatial recall.</Text>
+          <Text>Enhances memory and spatial recall.</Text>
         </Box>
 
         {/* Benefit 3 */}
@@ -115,7 +121,7 @@ export function WhyLearn() {
               Problem-Solving
             </Title>
           </Flex>
-          <Text >Builds planning and strategizing abilities.</Text>
+          <Text>Builds planning and strategizing abilities.</Text>
         </Box>
 
         {/* Benefit 4 */}
@@ -140,20 +146,20 @@ export function WhyLearn() {
               Focus & Confidence
             </Title>
           </Flex>
-          <Text >Improves concentration and builds resilience.</Text>
+          <Text>Improves concentration and builds resilience.</Text>
         </Box>
       </SimpleGrid>
 
       {/* Call-to-Action */}
       <Flex align="center" justify="center">
-        <Button 
-            size="md" 
-            radius="lg" 
-            variant="gradient" 
-            gradient={{ from: "blue", to: "indigo", deg: 90 }}
-            leftSection={<IconInfoCircle size={20} />}
-          >
-            Learn More
+        <Button
+          size="md"
+          radius="lg"
+          variant="gradient"
+          gradient={{ from: "blue", to: "indigo", deg: 90 }}
+          leftSection={<IconInfoCircle size={20} />}
+        >
+          Learn More
         </Button>
       </Flex>
     </Container>
