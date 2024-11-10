@@ -22,7 +22,7 @@
     );
 
     color: var(
-      --mantine-color-blue-8
+      --mantine-color-blue-6
     ); /* Change this to your desired hover color */
   }
 }

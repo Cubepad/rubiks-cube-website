@@ -1,0 +1,24 @@
+.timerSection {
+  background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
+  border-radius: var(--mantine-radius-lg);
+  padding: var(--mantine-spacing-md);
+  height: 400px;
+  overflow-y: auto;
+
+  border: light-dark(
+    1px solid var(--mantine-color-gray-3),
+    1px solid var(--mantine-color-dark-4)
+  );
+}
+
+#timer-display {
+  user-select: none; 
+  touch-action: none; 
+  -webkit-tap-highlight-color: transparent; 
+}
+
+@media (max-width: 768px) {
+  .timeSectionContainer {
+    flex-direction: column;
+  }
+}

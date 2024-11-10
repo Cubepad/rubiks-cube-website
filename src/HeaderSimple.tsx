@@ -4,12 +4,13 @@ import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import { IconSun, IconMoon } from '@tabler/icons-react';
 import classes from './HeaderSimple.module.css';
 import { ThemeLogo } from './ThemeLogo';
+import { Link } from 'react-router-dom';
 
 const links = [
-  { link: "/Home", label: "Home" },
-  { link: "/Cube Basics", label: "Cube Basics" },
-  { link: "/Tutorials", label: "Tutorials" },
-  { link: "/More Resources", label: "More Resources" },
+  { link: "/", label: "Home" },
+  { link: "/cube-basics", label: "Cube Basics" },
+  { link: "/tutorials", label: "Tutorials" },
+  { link: "/timer", label: "Timer" }, 
 ];
 
 export function HeaderSimple() {
@@ -17,7 +18,6 @@ export function HeaderSimple() {
   const [active, setActive] = useState(links[0].link);
   const isMobile = useMediaQuery("(max-width: 768px)");
   
-  // Get color scheme functions from Mantine
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   const handleLinkClick = (link: string) => {
@@ -26,13 +26,10 @@ export function HeaderSimple() {
   };
 
   const items = links.map((link) => (
-    <a
+    <Link
       key={link.label}
-      href={link.link}
-      onClick={(event) => {
-        event.preventDefault();
-        handleLinkClick(link.link);
-      }}
+      to={link.link}
+      onClick={() => handleLinkClick(link.link)}
       className={`${classes.link} ${active === link.link ? classes.active : ''}`}
       style={{
         fontWeight: isMobile ? 700 : 500,
@@ -40,7 +37,7 @@ export function HeaderSimple() {
       }}
     >
       {link.label}
-    </a>
+    </Link>
   ));
 
   return (
@@ -91,7 +88,8 @@ export function HeaderSimple() {
             </ActionIcon>
 
             <Button
-              component="a"
+              component={Link}
+              to="/start-learning"
               size="sm"
               radius="lg"
               color="blue"
@@ -136,6 +134,8 @@ export function HeaderSimple() {
         >
           {items}
           <Button
+            component={Link}
+            to="/start-learning"
             size="xl"
             radius="lg"
             color="blue"
