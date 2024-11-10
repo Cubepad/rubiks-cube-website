@@ -8,9 +8,9 @@ import {
   CloseButton,
   Group,
   ActionIcon,
-  Box,
   Flex,
   Table,
+  Card,
 } from "@mantine/core";
 import {
   IconRefresh,
@@ -381,7 +381,11 @@ export function Timer() {
 
       <Flex className={classes.timeSectionContainer} justify="center" gap="xl">
         {showList && (
-          <Box
+          <Card
+            shadow="sm"
+            padding="md"
+            radius="lg"
+            withBorder
             className={classes.timerSection}
             style={{ flex: 1, maxWidth: isMobile ? "100%" : `600px` }}
           >
@@ -442,11 +446,15 @@ export function Timer() {
                 );
               })}
             </Stack>
-          </Box>
+          </Card>
         )}
 
         {showAverages && (
-          <Box
+          <Card
+            shadow="sm"
+            padding="md"
+            radius="lg"
+            withBorder
             className={classes.timerSection}
             style={{ flex: 1, maxWidth: isMobile ? "100%" : `600px` }}
           >
@@ -477,11 +485,15 @@ export function Timer() {
                 </Table.Tr>
               </Table.Tbody>
             </Table>
-          </Box>
+          </Card>
         )}
 
         {showChart && (
-          <Box
+          <Card
+            shadow="sm"
+            padding="md"
+            radius="lg"
+            withBorder
             className={classes.timerSection}
             style={{ flex: 1, maxWidth: isMobile ? "100%" : "600px" }}
           >
@@ -512,7 +524,7 @@ export function Timer() {
                 domain: ["auto", "auto"], // Dynamically adjust y-axis based on data
               }}
             />
-          </Box>
+          </Card>
         )}
       </Flex>
     </Container>
