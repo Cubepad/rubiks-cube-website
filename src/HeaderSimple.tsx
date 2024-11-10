@@ -56,6 +56,7 @@ export function HeaderSimple() {
         height: isMobile && opened ? "95%" : "4rem",
         overflow: "hidden",
         transition: "height 0.3s ease",
+        boxShadow: "var(--mantine-shadow-sm)",
       }}
     >
       <Container
