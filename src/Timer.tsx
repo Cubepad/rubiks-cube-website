@@ -303,17 +303,17 @@ export function Timer() {
           <ActionIcon variant="transparent" size="sm" onClick={refreshScramble}>
             <IconRefresh />
           </ActionIcon>
-          <ActionIcon
-            variant="transparent"
-            onClick={() => setShowChart(!showChart)}
-          >
-            <IconChartLine />
-          </ActionIcon>
           <ActionIcon variant="transparent" onClick={() => setShowList(!showList)}>
             <IconList />
           </ActionIcon>
           <ActionIcon variant="transparent" onClick={() => setShowAverages(!showAverages)}>
             <IconMath />
+          </ActionIcon>
+          <ActionIcon
+            variant="transparent"
+            onClick={() => setShowChart(!showChart)}
+          >
+            <IconChartLine />
           </ActionIcon>
         </Group>
         <Title id="timer-display" order={1} style={{ fontSize: "6rem", fontFamily: "monospace" }}>
@@ -325,38 +325,42 @@ export function Timer() {
       <Flex className={classes.timeSectionContainer} justify="center" gap="xl">
         {showList && (
           <Box className={classes.timerSection} style={{ flex: 1, maxWidth: isMobile ? '100%' : `600px` }}>
-            <Flex justify="space-between" mb="md">
-              <Title order={3}>Times</Title>
-              <Button leftSection={<IconTrash size="1rem" />} variant="light" radius="md" size="sm" onClick={clearAllTimes}>
-                Clear All
-              </Button>
-            </Flex>
-            <Stack>
-              {times.slice(0, 8).map((t, index) => (
-                <Flex key={index} justify="space-between">
-                  <Text>
-                    {index + 1}.{' '}
-                    {t.penalty === 'DNF' ? (
-                      <span style={{ color: 'red' }}>DNF ({formatTime(t.originalTime)})</span>
-                    ) : t.penalty === '+2' ? (
-                      <span style={{ color: 'orange' }}>{formatTime(t.time)} ({formatTime(t.originalTime)})</span>
-                    ) : (
-                      formatTime(t.time)
-                    )}
-                  </Text>
-                  <Group gap="xs">
-                    <Button variant="subtle" size="xs" radius="md" onClick={() => togglePenalty(index, '+2')}>
-                      +2
-                    </Button>
-                    <Button variant="subtle" size="xs" radius="md" onClick={() => togglePenalty(index, 'DNF')}>
-                      DNF
-                    </Button>
-                    <CloseButton radius="md" onClick={() => deleteTime(index)} />
-                  </Group>
-                </Flex>
-              ))}
-            </Stack>
-          </Box>
+  <Flex justify="space-between" mb="md">
+    <Title order={3}>Times</Title>
+    <Button leftSection={<IconTrash size="1rem" />} variant="light" radius="md" size="sm" onClick={clearAllTimes}>
+      Clear All
+    </Button>
+  </Flex>
+  <Stack>
+    {times.slice(0, 1000).map((t, index) => {
+      const solveNumber = times.length - index; // Calculate solve number based on total solves
+      return (
+        <Flex key={index} justify="space-between">
+          <Text>
+            {solveNumber}.{' '}
+            {t.penalty === 'DNF' ? (
+              <span style={{ color: 'red' }}>DNF ({formatTime(t.originalTime)})</span>
+            ) : t.penalty === '+2' ? (
+              <span style={{ color: 'orange' }}>{formatTime(t.time)} ({formatTime(t.originalTime)})</span>
+            ) : (
+              formatTime(t.time)
+            )}
+          </Text>
+          <Group gap="xs">
+            <Button variant="subtle" size="xs" radius="md" onClick={() => togglePenalty(index, '+2')}>
+              +2
+            </Button>
+            <Button variant="subtle" size="xs" radius="md" onClick={() => togglePenalty(index, 'DNF')}>
+              DNF
+            </Button>
+            <CloseButton radius="md" onClick={() => deleteTime(index)} />
+          </Group>
+        </Flex>
+      );
+    })}
+  </Stack>
+</Box>
+
         )}
 
         {showAverages && (
@@ -390,16 +394,28 @@ export function Timer() {
         )}
 
         {showChart && (
-          <Box className={classes.timerSection} style={{ flex: 1, maxWidth: isMobile ? '100%' : `600px` }}>
+          <Box className={classes.timerSection} style={{ flex: 1, maxWidth: isMobile ? '100%' : '600px' }}>
             <Title mb="md" order={3}>Graph</Title>
             <LineChart
               h={300}
               data={times
-                .slice(0, 100)
-                .map((solve, index) => ({ index, time: solve.penalty === 'DNF' ? null : solve.time / 1000 }))}
+                .slice(0, 1000)
+                .reverse() // Reverse the array so newest items appear last (on the right)
+                .map((solve, index) => ({
+                  index: index + 1, // Adjust index to start from 1
+                  time: solve.penalty === 'DNF' ? null : (solve.time / 1000).toFixed(2), // Format time to 2 decimal places
+                }))}
               dataKey="index"
-              series={[{ name: "time", color: "blue" }]}
+              series={[{ name: 'time', label: 'Solve Time', color: 'blue' }]}
               curveType="natural"
+              tooltipAnimationDuration={200}
+              unit="s"
+              xAxisProps={{
+                tick: false, // Hide the x-axis numbers (ticks)
+              }}
+              yAxisProps={{
+                domain: ['auto', 'auto'], // Dynamically adjust y-axis based on data
+              }}
             />
           </Box>
         )}
