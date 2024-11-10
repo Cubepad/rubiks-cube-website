@@ -1,4 +1,16 @@
 .header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 1280px;
+  border-radius: 20px;
+  z-index: 1000;
+  background-color: var(--mantine-color-body);
+  overflow: hidden;
+  transition: height 0.3s ease;
+  box-shadow: var(--mantine-shadow-sm);
   border: light-dark(
     1px solid var(--mantine-color-gray-3),
     1px solid var(--mantine-color-dark-4)
@@ -16,13 +28,7 @@
   transition: all 0.15s;
 
   @mixin hover {
-    background-color: light-dark(
-      var(--mantine-color-gray-0),
-      var(--mantine-color-dark-6)
-    );
-
-    color: var(
-      --mantine-color-blue-6
-    ); /* Change this to your desired hover color */
+    background-color: var(--mantine-color-blue-light);
+    color: var(--mantine-color-blue-light-color);
   }
 }

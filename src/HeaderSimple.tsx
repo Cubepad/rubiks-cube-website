@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Burger, Container, Flex, Button, ActionIcon, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import { IconSun, IconMoon } from '@tabler/icons-react';
@@ -14,23 +13,17 @@ const links = [
 ];
 
 export function HeaderSimple() {
-  const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  const [opened, { toggle, close }] = useDisclosure(false);
   const isMobile = useMediaQuery("(max-width: 768px)");
   
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-
-  const handleLinkClick = (link: string) => {
-    setActive(link);
-    if (isMobile) toggle();
-  };
 
   const items = links.map((link) => (
     <Link
       key={link.label}
       to={link.link}
-      onClick={() => handleLinkClick(link.link)}
-      className={`${classes.link} ${active === link.link ? classes.active : ''}`}
+      onClick={() => isMobile && close()}  // Close menu on click for mobile
+      className={classes.link}
       style={{
         fontWeight: isMobile ? 700 : 500,
         fontSize: isMobile ? "1.5rem" : "1rem",
@@ -44,19 +37,7 @@ export function HeaderSimple() {
     <header
       className={classes.header}
       style={{
-        position: "fixed",
-        top: "1rem",
-        left: "50%",
-        transform: "translateX(-50%)",
-        width: "calc(100% - 2rem)",
-        maxWidth: "1280px",
-        borderRadius: "20px",
-        zIndex: 1000,
-        backgroundColor: "var(--mantine-color-body)",
         height: isMobile && opened ? "95%" : "4rem",
-        overflow: "hidden",
-        transition: "height 0.3s ease",
-        boxShadow: "var(--mantine-shadow-sm)",
       }}
     >
       <Container
@@ -68,7 +49,12 @@ export function HeaderSimple() {
           height: "4rem",
         }}
       >
-        <ThemeLogo />
+        <Link
+          to="/"
+          style={{display: "inline-flex"}}
+          >
+          <ThemeLogo />
+        </Link>
 
         {/* Desktop Navigation */}
         {!isMobile && (
@@ -90,7 +76,7 @@ export function HeaderSimple() {
 
             <Button
               component={Link}
-              to="/start-learning"
+              to="/cube-basics"
               size="sm"
               radius="lg"
               color="blue"
@@ -136,7 +122,8 @@ export function HeaderSimple() {
           {items}
           <Button
             component={Link}
-            to="/start-learning"
+            to="/cube-basics"
+            onClick={close}  // Close menu on click
             size="xl"
             radius="lg"
             color="blue"
