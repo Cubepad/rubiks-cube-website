@@ -11,12 +11,14 @@ import { MantineProvider, AppShell, Container } from "@mantine/core";
 import { Footer } from "./Footer";
 import { WhyLearn } from "./WhyLearn"
 import { RubiksHistory } from "./RubiksHistory"
-import { Timer } from "./Timer"; // New import for the Timer component
+import { Timer } from "./Timer";
+import ScrollToTop from "./ScrollToTop"; // Import the new component
 
 export default function App() {
   return (
     <MantineProvider defaultColorScheme="auto">
       <Router>
+        <ScrollToTop /> {/* Add this line */}
         <AppShell padding="md">
           <Container style={{ paddingBottom: "3.75rem" }}>
             <HeaderSimple />
