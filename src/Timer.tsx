@@ -58,7 +58,7 @@ const calculateAverage = (times: number[], n: number) => {
 
 interface SolveTime {
   time: number;
-  penalty: 'none' | '+2' | 'DNF';
+  penalty: "none" | "+2" | "DNF";
   originalTime: number;
 }
 
@@ -87,16 +87,16 @@ export function Timer() {
   useEffect(() => {
     if (isRunning) {
       startTimeRef.current = performance.now();
-      
+
       const updateTimer = () => {
         const now = performance.now();
         const elapsed = now - startTimeRef.current;
         setTime(Math.floor(elapsed));
         animationFrameRef.current = requestAnimationFrame(updateTimer);
       };
-      
+
       animationFrameRef.current = requestAnimationFrame(updateTimer);
-      
+
       return () => {
         if (animationFrameRef.current) {
           cancelAnimationFrame(animationFrameRef.current);
@@ -114,7 +114,10 @@ export function Timer() {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      setTimes((prevTimes) => [{ time, penalty: 'none', originalTime: time }, ...prevTimes]);
+      setTimes((prevTimes) => [
+        { time, penalty: "none", originalTime: time },
+        ...prevTimes,
+      ]);
       setIsRunning(false);
     }
   }, [isRunning, time]);
@@ -128,73 +131,84 @@ export function Timer() {
     setTime(0);
     setScramble(generateScramble());
   }, [isRunning]);
-  
+
   const hasHeldLongEnough = useRef(false);
   const touchStartTimeRef = useRef<number>(0);
   const hasHeldLongEnoughTouch = useRef(false);
   const holdStartTime = useRef<number>(0);
-  
-  const handleTouchStart = useCallback((e: TouchEvent) => {
-    e.preventDefault();
-    if (!isRunning && !isHolding) {
-      setIsHolding(true);
-      touchStartTimeRef.current = Date.now();
-      
-      // Start holding detection, this is for a long press
-      holdTimerRef.current = window.setTimeout(() => {
-        hasHeldLongEnoughTouch.current = true;
-      }, 200);
-    }
-    // If already running and tapped, stop immediately
-    if (isRunning) {
-      // Stop the timer when already running, as soon as touched
-      startStop();
-    }
-  }, [isRunning, isHolding, startStop]);
-  
-  const handleTouchEnd = useCallback((e: TouchEvent) => {
-    e.preventDefault();
-    
-    // Cancel long press detection if it hasn't been triggered
-    if (holdTimerRef.current) {
-      clearTimeout(holdTimerRef.current);
-    }
-  
-    // If held long enough and timer isn't running, start the timer
-    if (hasHeldLongEnoughTouch.current && !isRunning) {
-      startStop();
-    } else if (isRunning) {
-      // If already running and no long press, just stop it
-      startStop();
-    }
-  
-    setIsHolding(false);
-    hasHeldLongEnoughTouch.current = false;
-    touchStartTimeRef.current = 0;
-  }, [isRunning, startStop]);
-  
+
+  const handleTouchStart = useCallback(
+    (e: TouchEvent) => {
+      e.preventDefault();
+      if (!isRunning && !isHolding) {
+        setIsHolding(true);
+        touchStartTimeRef.current = Date.now();
+
+        // Start holding detection, this is for a long press
+        holdTimerRef.current = window.setTimeout(() => {
+          hasHeldLongEnoughTouch.current = true;
+        }, 200);
+      }
+      // If already running and tapped, stop immediately
+      if (isRunning) {
+        // Stop the timer when already running, as soon as touched
+        startStop();
+      }
+    },
+    [isRunning, isHolding, startStop]
+  );
+
+  const handleTouchEnd = useCallback(
+    (e: TouchEvent) => {
+      e.preventDefault();
+
+      // Cancel long press detection if it hasn't been triggered
+      if (holdTimerRef.current) {
+        clearTimeout(holdTimerRef.current);
+      }
+
+      // If held long enough and timer isn't running, start the timer
+      if (hasHeldLongEnoughTouch.current && !isRunning) {
+        startStop();
+      } else if (isRunning) {
+        // If already running and no long press, just stop it
+        startStop();
+      }
+
+      setIsHolding(false);
+      hasHeldLongEnoughTouch.current = false;
+      touchStartTimeRef.current = 0;
+    },
+    [isRunning, startStop]
+  );
+
   useEffect(() => {
-    const timerElement = document.getElementById('timer-display');
-    
+    const timerElement = document.getElementById("timer-display");
+
     if (isMobile && timerElement) {
-      timerElement.addEventListener('touchstart', handleTouchStart, { passive: false });
-      timerElement.addEventListener('touchend', handleTouchEnd, { passive: false });
-      
+      timerElement.addEventListener("touchstart", handleTouchStart, {
+        passive: false,
+      });
+      timerElement.addEventListener("touchend", handleTouchEnd, {
+        passive: false,
+      });
+
       // Prevent default touch behavior (scrolling, zooming)
       const preventDefault = (e: TouchEvent) => {
         e.preventDefault();
       };
-      
-      timerElement.addEventListener('touchmove', preventDefault, { passive: false });
-      
+
+      timerElement.addEventListener("touchmove", preventDefault, {
+        passive: false,
+      });
+
       return () => {
-        timerElement.removeEventListener('touchstart', handleTouchStart);
-        timerElement.removeEventListener('touchend', handleTouchEnd);
-        timerElement.removeEventListener('touchmove', preventDefault);
+        timerElement.removeEventListener("touchstart", handleTouchStart);
+        timerElement.removeEventListener("touchend", handleTouchEnd);
+        timerElement.removeEventListener("touchmove", preventDefault);
       };
     }
   }, [isMobile, handleTouchStart, handleTouchEnd]);
-  
 
   useEffect(() => {
     // Prevent space scrolling globally
@@ -203,55 +217,59 @@ export function Timer() {
         e.preventDefault();
       }
     };
-  
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === "Space" && !isRunning && !isHolding) {
         event.preventDefault();
         setIsHolding(true);
         holdStartTime.current = Date.now();
-        
+
         holdTimerRef.current = window.setTimeout(() => {
           hasHeldLongEnough.current = true;
         }, 200);
       } else if (event.code === "Escape") {
         event.preventDefault();
         reset();
-      } else if (isRunning && !event.code.startsWith("F") && event.code !== "Escape") {
+      } else if (
+        isRunning &&
+        !event.code.startsWith("F") &&
+        event.code !== "Escape"
+      ) {
         event.preventDefault();
         startStop();
       }
     };
-  
+
     const handleKeyUp = (event: KeyboardEvent) => {
       if (event.code === "Space") {
         event.preventDefault();
-        
+
         if (holdTimerRef.current) {
           clearTimeout(holdTimerRef.current);
         }
-        
+
         if (hasHeldLongEnough.current && !isRunning) {
           startStop();
         }
-        
+
         setIsHolding(false);
         hasHeldLongEnough.current = false;
         holdStartTime.current = 0;
       }
     };
-  
+
     // Add the global space prevention listener
-    window.addEventListener('keydown', preventSpaceScroll, { passive: false });
+    window.addEventListener("keydown", preventSpaceScroll, { passive: false });
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
-  
+
     return () => {
-      window.removeEventListener('keydown', preventSpaceScroll);
+      window.removeEventListener("keydown", preventSpaceScroll);
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
   }, [startStop, reset, isRunning, isHolding]);
-  
+
   // Rest of the code remains the same...
 
   const formatTime = (time: number | null) => {
@@ -269,14 +287,17 @@ export function Timer() {
     setTimes([]);
   };
 
-  const togglePenalty = (index: number, penalty: '+2' | 'DNF') => {
+  const togglePenalty = (index: number, penalty: "+2" | "DNF") => {
     setTimes((prevTimes) =>
       prevTimes.map((t, i) =>
         i === index
           ? {
               ...t,
-              penalty: t.penalty === penalty ? 'none' : penalty,
-              time: penalty === '+2' && t.penalty !== '+2' ? t.time + 2000 : t.originalTime
+              penalty: t.penalty === penalty ? "none" : penalty,
+              time:
+                penalty === "+2" && t.penalty !== "+2"
+                  ? t.time + 2000
+                  : t.originalTime,
             }
           : t
       )
@@ -287,11 +308,36 @@ export function Timer() {
     setScramble(generateScramble());
   };
 
-  const pb = times.length > 0 ? Math.min(...times.filter(t => t.penalty !== 'DNF').map(t => t.time)) : null;
-  const ao5 = calculateAverage(times.slice(0, 5).map(t => t.penalty === 'DNF' ? Infinity : t.time), 5);
-  const ao12 = calculateAverage(times.slice(0, 12).map(t => t.penalty === 'DNF' ? Infinity : t.time), 12);
-  const ao100 = calculateAverage(times.slice(0, 100).map(t => t.penalty === 'DNF' ? Infinity : t.time), 100);
-  const ao5pb = times.length >= 5 ? Math.min(...times.map((_, i, arr) => calculateAverage(arr.slice(i, i + 5).map(t => t.penalty === 'DNF' ? Infinity : t.time), 5) || Infinity)) : null;
+  const pb =
+    times.length > 0
+      ? Math.min(...times.filter((t) => t.penalty !== "DNF").map((t) => t.time))
+      : null;
+  const ao5 = calculateAverage(
+    times.slice(0, 5).map((t) => (t.penalty === "DNF" ? Infinity : t.time)),
+    5
+  );
+  const ao12 = calculateAverage(
+    times.slice(0, 12).map((t) => (t.penalty === "DNF" ? Infinity : t.time)),
+    12
+  );
+  const ao100 = calculateAverage(
+    times.slice(0, 100).map((t) => (t.penalty === "DNF" ? Infinity : t.time)),
+    100
+  );
+  const ao5pb =
+    times.length >= 5
+      ? Math.min(
+          ...times.map(
+            (_, i, arr) =>
+              calculateAverage(
+                arr
+                  .slice(i, i + 5)
+                  .map((t) => (t.penalty === "DNF" ? Infinity : t.time)),
+                5
+              ) || Infinity
+          )
+        )
+      : null;
 
   return (
     <Container size="xl" style={{ marginTop: "8rem" }}>
@@ -303,10 +349,16 @@ export function Timer() {
           <ActionIcon variant="transparent" size="sm" onClick={refreshScramble}>
             <IconRefresh />
           </ActionIcon>
-          <ActionIcon variant="transparent" onClick={() => setShowList(!showList)}>
+          <ActionIcon
+            variant="transparent"
+            onClick={() => setShowList(!showList)}
+          >
             <IconList />
           </ActionIcon>
-          <ActionIcon variant="transparent" onClick={() => setShowAverages(!showAverages)}>
+          <ActionIcon
+            variant="transparent"
+            onClick={() => setShowAverages(!showAverages)}
+          >
             <IconMath />
           </ActionIcon>
           <ActionIcon
@@ -316,7 +368,12 @@ export function Timer() {
             <IconChartLine />
           </ActionIcon>
         </Group>
-        <Title id="timer-display" order={1} style={{ fontSize: "6rem", fontFamily: "monospace" }}>
+        <Title
+          id="timer-display"
+          className={classes.timerDisplay}
+          order={1}
+          style={{ fontSize: "6rem", fontFamily: "monospace" }}
+        >
           {formatTime(time)}
         </Title>
         {isHolding && <Text>Hold to start...</Text>}
@@ -324,48 +381,78 @@ export function Timer() {
 
       <Flex className={classes.timeSectionContainer} justify="center" gap="xl">
         {showList && (
-          <Box className={classes.timerSection} style={{ flex: 1, maxWidth: isMobile ? '100%' : `600px` }}>
-  <Flex justify="space-between" mb="md">
-    <Title order={3}>Times</Title>
-    <Button leftSection={<IconTrash size="1rem" />} variant="light" radius="md" size="sm" onClick={clearAllTimes}>
-      Clear All
-    </Button>
-  </Flex>
-  <Stack>
-    {times.slice(0, 1000).map((t, index) => {
-      const solveNumber = times.length - index; // Calculate solve number based on total solves
-      return (
-        <Flex key={index} justify="space-between">
-          <Text>
-            {solveNumber}.{' '}
-            {t.penalty === 'DNF' ? (
-              <span style={{ color: 'red' }}>DNF ({formatTime(t.originalTime)})</span>
-            ) : t.penalty === '+2' ? (
-              <span style={{ color: 'orange' }}>{formatTime(t.time)} ({formatTime(t.originalTime)})</span>
-            ) : (
-              formatTime(t.time)
-            )}
-          </Text>
-          <Group gap="xs">
-            <Button variant="subtle" size="xs" radius="md" onClick={() => togglePenalty(index, '+2')}>
-              +2
-            </Button>
-            <Button variant="subtle" size="xs" radius="md" onClick={() => togglePenalty(index, 'DNF')}>
-              DNF
-            </Button>
-            <CloseButton radius="md" onClick={() => deleteTime(index)} />
-          </Group>
-        </Flex>
-      );
-    })}
-  </Stack>
-</Box>
-
+          <Box
+            className={classes.timerSection}
+            style={{ flex: 1, maxWidth: isMobile ? "100%" : `600px` }}
+          >
+            <Flex justify="space-between" mb="md">
+              <Title order={3}>Times</Title>
+              <Button
+                leftSection={<IconTrash size="1rem" />}
+                variant="light"
+                radius="md"
+                size="sm"
+                onClick={clearAllTimes}
+              >
+                Clear All
+              </Button>
+            </Flex>
+            <Stack>
+              {times.slice(0, 1000).map((t, index) => {
+                const solveNumber = times.length - index; // Calculate solve number based on total solves
+                return (
+                  <Flex key={index} justify="space-between">
+                    <Text>
+                      {solveNumber}.{" "}
+                      {t.penalty === "DNF" ? (
+                        <span style={{ color: "red" }}>
+                          DNF ({formatTime(t.originalTime)})
+                        </span>
+                      ) : t.penalty === "+2" ? (
+                        <span style={{ color: "orange" }}>
+                          {formatTime(t.time)} ({formatTime(t.originalTime)})
+                        </span>
+                      ) : (
+                        formatTime(t.time)
+                      )}
+                    </Text>
+                    <Group gap="xs">
+                      <Button
+                        variant="subtle"
+                        size="xs"
+                        radius="md"
+                        onClick={() => togglePenalty(index, "+2")}
+                      >
+                        +2
+                      </Button>
+                      <Button
+                        variant="subtle"
+                        size="xs"
+                        radius="md"
+                        onClick={() => togglePenalty(index, "DNF")}
+                      >
+                        DNF
+                      </Button>
+                      <CloseButton
+                        radius="md"
+                        onClick={() => deleteTime(index)}
+                      />
+                    </Group>
+                  </Flex>
+                );
+              })}
+            </Stack>
+          </Box>
         )}
 
         {showAverages && (
-          <Box className={classes.timerSection} style={{ flex: 1, maxWidth: isMobile ? '100%' : `600px` }}>
-            <Title mb="md" order={3}>Statistics</Title>
+          <Box
+            className={classes.timerSection}
+            style={{ flex: 1, maxWidth: isMobile ? "100%" : `600px` }}
+          >
+            <Title mb="md" order={3}>
+              Statistics
+            </Title>
             <Table>
               <Table.Tbody>
                 <Table.Tr>
@@ -394,8 +481,13 @@ export function Timer() {
         )}
 
         {showChart && (
-          <Box className={classes.timerSection} style={{ flex: 1, maxWidth: isMobile ? '100%' : '600px' }}>
-            <Title mb="md" order={3}>Graph</Title>
+          <Box
+            className={classes.timerSection}
+            style={{ flex: 1, maxWidth: isMobile ? "100%" : "600px" }}
+          >
+            <Title mb="md" order={3}>
+              Graph
+            </Title>
             <LineChart
               h={300}
               data={times
@@ -403,10 +495,13 @@ export function Timer() {
                 .reverse() // Reverse the array so newest items appear last (on the right)
                 .map((solve, index) => ({
                   index: index + 1, // Adjust index to start from 1
-                  time: solve.penalty === 'DNF' ? null : (solve.time / 1000).toFixed(2), // Format time to 2 decimal places
+                  time:
+                    solve.penalty === "DNF"
+                      ? null
+                      : (solve.time / 1000).toFixed(2), // Format time to 2 decimal places
                 }))}
               dataKey="index"
-              series={[{ name: 'time', label: 'Solve Time', color: 'blue' }]}
+              series={[{ name: "time", label: "Solve Time", color: "blue" }]}
               curveType="natural"
               tooltipAnimationDuration={200}
               unit="s"
@@ -414,7 +509,7 @@ export function Timer() {
                 tick: false, // Hide the x-axis numbers (ticks)
               }}
               yAxisProps={{
-                domain: ['auto', 'auto'], // Dynamically adjust y-axis based on data
+                domain: ["auto", "auto"], // Dynamically adjust y-axis based on data
               }}
             />
           </Box>
