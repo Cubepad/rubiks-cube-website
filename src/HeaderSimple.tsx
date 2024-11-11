@@ -1,29 +1,43 @@
-import { Burger, Container, Flex, Button, ActionIcon, useMantineColorScheme } from "@mantine/core";
+import { useState } from "react";
+import {
+  Burger,
+  Container,
+  Flex,
+  Button,
+  ActionIcon,
+  useMantineColorScheme,
+} from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
-import { IconSun, IconMoon } from '@tabler/icons-react';
-import classes from './HeaderSimple.module.css';
-import { ThemeLogo } from './ThemeLogo';
-import { Link } from 'react-router-dom';
+import { IconSun, IconMoon } from "@tabler/icons-react";
+import classes from "./HeaderSimple.module.css";
+import { ThemeLogo } from "./ThemeLogo";
+import { Link, useLocation } from "react-router-dom";
 
 const links = [
   { link: "/", label: "Home" },
   { link: "/cube-basics", label: "Cube Basics" },
   { link: "/tutorials", label: "Tutorials" },
-  { link: "/timer", label: "Timer" }, 
+  { link: "/timer", label: "Timer" },
 ];
 
 export function HeaderSimple() {
   const [opened, { toggle, close }] = useDisclosure(false);
   const isMobile = useMediaQuery("(max-width: 768px)");
-  
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.pathname);
 
   const items = links.map((link) => (
     <Link
       key={link.label}
       to={link.link}
-      onClick={() => isMobile && close()}  // Close menu on click for mobile
-      className={classes.link}
+      onClick={() => {
+        if (isMobile) close();
+        setActiveTab(link.link);
+      }}
+      className={`${classes.link} ${
+        activeTab === link.link ? classes.activeLink : ""
+      }`}
       style={{
         fontWeight: isMobile ? 700 : 500,
         fontSize: isMobile ? "1.5rem" : "1rem",
@@ -49,19 +63,12 @@ export function HeaderSimple() {
           height: "4rem",
         }}
       >
-        <Link
-          to="/"
-          style={{display: "inline-flex"}}
-          >
+        <Link to="/" style={{ display: "inline-flex" }}>
           <ThemeLogo />
         </Link>
 
-        {/* Desktop Navigation */}
-        {!isMobile && (
-          <Flex gap={"sm"}>{items}</Flex>
-        )}
+        {!isMobile && <Flex gap="sm">{items}</Flex>}
 
-        {/* Theme Toggle and Start Learning Buttons in a Flex Group */}
         {!isMobile ? (
           <Flex align="center" gap="sm">
             <ActionIcon
@@ -71,7 +78,11 @@ export function HeaderSimple() {
               title="Toggle color scheme"
               size="lg"
             >
-              {colorScheme === "dark" ? <IconSun size={22} /> : <IconMoon size={22} />}
+              {colorScheme === "dark" ? (
+                <IconSun size={22} />
+              ) : (
+                <IconMoon size={22} />
+              )}
             </ActionIcon>
 
             <Button
@@ -87,7 +98,6 @@ export function HeaderSimple() {
             </Button>
           </Flex>
         ) : (
-          // Mobile: Burger and Theme Toggle in a Flex container
           <Flex align="center" gap="sm">
             <ActionIcon
               variant="default"
@@ -96,7 +106,11 @@ export function HeaderSimple() {
               title="Toggle color scheme"
               size="lg"
             >
-              {colorScheme === "dark" ? <IconSun size={18} /> : <IconMoon size={18} />}
+              {colorScheme === "dark" ? (
+                <IconSun size={18} />
+              ) : (
+                <IconMoon size={18} />
+              )}
             </ActionIcon>
 
             <Burger
@@ -109,7 +123,6 @@ export function HeaderSimple() {
         )}
       </Container>
 
-      {/* Mobile Expanded Navigation */}
       {isMobile && opened && (
         <Flex
           direction="column"
@@ -123,7 +136,7 @@ export function HeaderSimple() {
           <Button
             component={Link}
             to="/cube-basics"
-            onClick={close}  // Close menu on click
+            onClick={() => close()}
             size="xl"
             radius="lg"
             color="blue"

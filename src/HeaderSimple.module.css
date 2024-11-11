@@ -22,7 +22,7 @@
   padding: 0.5rem 1rem;
   border-radius: var(--mantine-radius-md);
   text-decoration: none;
-  color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
+  color: inherit;
   font-size: var(--mantine-font-size-md);
   font-weight: 500;
   transition: all 0.15s;
@@ -31,4 +31,9 @@
     background-color: var(--mantine-color-blue-light);
     color: var(--mantine-color-blue-light-color);
   }
+}
+
+.activeLink {
+  background-color: var(--mantine-color-blue-light);
+  color: var(--mantine-color-blue-light-color);
 }
