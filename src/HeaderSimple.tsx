@@ -1,23 +1,16 @@
-import { useState } from "react";
-import {
-  Burger,
-  Container,
-  Flex,
-  Button,
-  ActionIcon,
-  useMantineColorScheme,
-} from "@mantine/core";
+import { useState, useRef, useEffect } from 'react';
+import { Burger, Container, Flex, Button, ActionIcon, useMantineColorScheme } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
-import { IconSun, IconMoon } from "@tabler/icons-react";
-import classes from "./HeaderSimple.module.css";
-import { ThemeLogo } from "./ThemeLogo";
-import { Link, useLocation } from "react-router-dom";
+import { IconSun, IconMoon } from '@tabler/icons-react';
+import classes from './HeaderSimple.module.css';
+import { ThemeLogo } from './ThemeLogo';
+import { Link, useLocation } from 'react-router-dom';
 
 const links = [
   { link: "/", label: "Home" },
   { link: "/cube-basics", label: "Cube Basics" },
   { link: "/tutorials", label: "Tutorials" },
-  { link: "/timer", label: "Timer" },
+  { link: "/timer", label: "Timer" }, 
 ];
 
 export function HeaderSimple() {
@@ -26,21 +19,38 @@ export function HeaderSimple() {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const location = useLocation();
   const [activeTab, setActiveTab] = useState(location.pathname);
+  const indicatorRef = useRef<HTMLDivElement>(null);
+  const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
-  const items = links.map((link) => (
+  useEffect(() => {
+    setActiveTab(location.pathname);
+  }, [location]);
+
+  useEffect(() => {
+    const activeIndex = links.findIndex(link => link.link === activeTab);
+    if (activeIndex !== -1 && indicatorRef.current && linksRef.current[activeIndex]) {
+      const activeLink = linksRef.current[activeIndex];
+      indicatorRef.current.style.width = `${activeLink?.offsetWidth}px`;
+      indicatorRef.current.style.height = `${activeLink?.offsetHeight}px`;
+      indicatorRef.current.style.left = `${activeLink?.offsetLeft}px`;
+      indicatorRef.current.style.top = `${activeLink?.offsetTop}px`;
+    }
+  }, [activeTab]);
+
+  const items = links.map((link, index) => (
     <Link
       key={link.label}
       to={link.link}
+      ref={el => linksRef.current[index] = el}
       onClick={() => {
         if (isMobile) close();
         setActiveTab(link.link);
       }}
-      className={`${classes.link} ${
-        activeTab === link.link ? classes.activeLink : ""
-      }`}
+      className={classes.link}
       style={{
         fontWeight: isMobile ? 700 : 500,
         fontSize: isMobile ? "1.5rem" : "1rem",
+        color: activeTab === link.link ? 'var(--mantine-color-blue-light-color)' : 'inherit',
       }}
     >
       {link.label}
@@ -63,11 +73,19 @@ export function HeaderSimple() {
           height: "4rem",
         }}
       >
-        <Link to="/" style={{ display: "inline-flex" }}>
+        <Link
+          to="/"
+          style={{display: "inline-flex"}}
+        >
           <ThemeLogo />
         </Link>
 
-        {!isMobile && <Flex gap="sm">{items}</Flex>}
+        {!isMobile && (
+          <Flex gap="sm" style={{ position: 'relative' }}>
+            {items}
+            <div ref={indicatorRef} className={classes.floatingIndicator} />
+          </Flex>
+        )}
 
         {!isMobile ? (
           <Flex align="center" gap="sm">
@@ -78,11 +96,7 @@ export function HeaderSimple() {
               title="Toggle color scheme"
               size="lg"
             >
-              {colorScheme === "dark" ? (
-                <IconSun size={22} />
-              ) : (
-                <IconMoon size={22} />
-              )}
+              {colorScheme === "dark" ? <IconSun size={22} /> : <IconMoon size={22} />}
             </ActionIcon>
 
             <Button
@@ -106,11 +120,7 @@ export function HeaderSimple() {
               title="Toggle color scheme"
               size="lg"
             >
-              {colorScheme === "dark" ? (
-                <IconSun size={18} />
-              ) : (
-                <IconMoon size={18} />
-              )}
+              {colorScheme === "dark" ? <IconSun size={18} /> : <IconMoon size={18} />}
             </ActionIcon>
 
             <Burger

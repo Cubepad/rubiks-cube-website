@@ -22,18 +22,25 @@
   padding: 0.5rem 1rem;
   border-radius: var(--mantine-radius-md);
   text-decoration: none;
-  color: inherit;
   font-size: var(--mantine-font-size-md);
   font-weight: 500;
   transition: all 0.15s;
-
-  @mixin hover {
-    background-color: var(--mantine-color-blue-light);
-    color: var(--mantine-color-blue-light-color);
-  }
+  position: relative;
+  z-index: 2;
 }
 
-.activeLink {
-  background-color: var(--mantine-color-blue-light);
-  color: var(--mantine-color-blue-light-color);
+
+.floatingIndicator {
+  position: absolute;
+  background-color: var(--mantine-color-white);
+  border-radius: var(--mantine-radius-md);
+  border: 1px solid var(--mantine-color-gray-2);
+  box-shadow: var(--mantine-shadow-sm);
+  transition: all 0.2s ease;
+  z-index: 1;
+
+  @mixin dark {
+    background-color: var(--mantine-color-dark-6);
+    border-color: var(--mantine-color-dark-4);
+  }
 }
