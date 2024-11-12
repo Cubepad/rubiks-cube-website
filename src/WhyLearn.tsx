@@ -5,7 +5,7 @@ import {
   Title,
   Text,
   SimpleGrid,
-  Box,
+  Card,
   ThemeIcon,
   Flex,
   Button,
@@ -50,7 +50,13 @@ export function WhyLearn() {
         mb="xl" // Default spacing
       >
         {/* Benefit 1 */}
-        <Box p="md" className={classes.benefitBox}>
+        <Card
+          shadow="sm"
+          padding="lg"
+          radius="lg"
+          withBorder
+          className={classes.benefitBox}
+        >
           <Flex align="center" mb="sm" gap="sm">
             <ThemeIcon
               variant="gradient"
@@ -72,10 +78,16 @@ export function WhyLearn() {
             </Title>
           </Flex>
           <Text>Boosts analytical thinking and coordination.</Text>
-        </Box>
+        </Card>
 
         {/* Benefit 2 */}
-        <Box p="md" className={classes.benefitBox}>
+        <Card
+          shadow="sm"
+          padding="lg"
+          radius="lg"
+          withBorder
+          className={classes.benefitBox}
+        >
           <Flex align="center" mb="sm" gap="sm">
             <ThemeIcon
               variant="gradient"
@@ -97,10 +109,16 @@ export function WhyLearn() {
             </Title>
           </Flex>
           <Text>Enhances memory and spatial recall.</Text>
-        </Box>
+        </Card>
 
         {/* Benefit 3 */}
-        <Box p="md" className={classes.benefitBox}>
+        <Card
+          shadow="sm"
+          padding="lg"
+          radius="lg"
+          withBorder
+          className={classes.benefitBox}
+        >
           <Flex align="center" mb="sm" gap="sm">
             <ThemeIcon
               variant="gradient"
@@ -122,10 +140,16 @@ export function WhyLearn() {
             </Title>
           </Flex>
           <Text>Builds planning and strategizing abilities.</Text>
-        </Box>
+        </Card>
 
         {/* Benefit 4 */}
-        <Box p="md" className={classes.benefitBox}>
+        <Card
+          shadow="sm"
+          padding="lg"
+          radius="lg"
+          withBorder
+          className={classes.benefitBox}
+        >
           <Flex align="center" mb="sm" gap="sm">
             <ThemeIcon
               variant="gradient"
@@ -147,7 +171,7 @@ export function WhyLearn() {
             </Title>
           </Flex>
           <Text>Improves concentration and builds resilience.</Text>
-        </Box>
+        </Card>
       </SimpleGrid>
 
       {/* Call-to-Action */}

@@ -1,15 +1,3 @@
-.benefitBox {
-  background-color: light-dark(
-    var(--mantine-color-white), var(--mantine-color-dark-6));
-
-  border: light-dark(
-    1px solid var(--mantine-color-gray-3),
-    1px solid var(--mantine-color-dark-4)
-  );
-
-  border-radius: var(--mantine-radius-lg);
-}
-
 .heading {
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
 }
