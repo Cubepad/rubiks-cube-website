@@ -1,0 +1,17 @@
+.container {
+  padding: 2rem;
+}
+
+.title {
+  margin-bottom: 1rem;
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+}
+
+.subHeading {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+}
+
+.description {
+  margin-bottom: 2rem;
+}
+

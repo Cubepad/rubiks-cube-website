@@ -12,13 +12,14 @@ import { Footer } from "./Footer";
 import { WhyLearn } from "./WhyLearn"
 import { RubiksHistory } from "./RubiksHistory"
 import { Timer } from "./Timer";
-import ScrollToTop from "./ScrollToTop"; // Import the new component
+import CubeNotations  from "./CubeNotation";
+import ScrollToTop from "./ScrollToTop"; 
 
 export default function App() {
   return (
     <MantineProvider defaultColorScheme="auto">
       <Router>
-        <ScrollToTop /> {/* Add this line */}
+        <ScrollToTop /> 
         <AppShell padding="md">
           <Container style={{ paddingBottom: "3.75rem" }}>
             <HeaderSimple />
@@ -33,6 +34,7 @@ export default function App() {
                 </>
               } />
               <Route path="/timer" element={<Timer />} />
+              <Route path="/cube-basics" element={<CubeNotations />} />
             </Routes>
           </AppShell.Main>
           <AppShell.Footer style={{zIndex: "-1", border: "none"}}>
