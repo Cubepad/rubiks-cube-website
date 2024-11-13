@@ -4,9 +4,9 @@
 
 .title {
   margin-bottom: 1rem;
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
 }
 
+.title,
 .subHeading {
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
 }
@@ -14,4 +14,3 @@
 .description {
   margin-bottom: 2rem;
 }
-

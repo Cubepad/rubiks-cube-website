@@ -39,7 +39,8 @@ const notationCategories: NotationCategory[] = [
   },
   {
     title: "Prime Moves",
-    description: "Counterclockwise rotations of a single face, denoted by an apostrophe (').",
+    description:
+      "Counterclockwise rotations of a single face, denoted by an apostrophe (').",
     notations: [
       { move: "R'", description: "Right face counterclockwise" },
       { move: "L'", description: "Left face counterclockwise" },
@@ -51,7 +52,8 @@ const notationCategories: NotationCategory[] = [
   },
   {
     title: "Double Moves",
-    description: "180-degree rotations of a single face, denoted by a '2' after the letter.",
+    description:
+      "180-degree rotations of a single face, denoted by a '2' after the letter.",
     notations: [
       { move: "R2", description: "Right face 180 degrees" },
       { move: "L2", description: "Left face 180 degrees" },
@@ -99,7 +101,7 @@ const NotationCard: React.FC<NotationItem> = ({ move, description }) => {
 
   useEffect(() => {
     if (playerRef.current) {
-      playerRef.current.innerHTML = '';
+      playerRef.current.innerHTML = "";
       const player = new TwistyPlayer({
         puzzle: "3x3x3",
         alg: move,
@@ -129,10 +131,20 @@ const NotationCard: React.FC<NotationItem> = ({ move, description }) => {
   return (
     <Card shadow="sm" padding="lg" radius="lg" withBorder>
       <Card.Section>
-        <div ref={playerRef} style={{ width: '100%', height: '200px' }}></div>
+        <div
+          ref={playerRef}
+          style={{
+            width: "100%",
+            height: "200px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        ></div>
       </Card.Section>
       <Group gap="md" mt="md" mb="xs">
-        <Text fw={500} size="lg">{move}</Text>
+        <Text className={classes.notationMove} fw={500} size="xl">
+          {move}
+        </Text>
       </Group>
       <Text size="sm" color="dimmed" mb="md">
         {description}
@@ -141,7 +153,12 @@ const NotationCard: React.FC<NotationItem> = ({ move, description }) => {
         <Button radius="md" variant="light" color="blue" onClick={handlePlay}>
           Play
         </Button>
-        <Button radius="md" variant="outline" color="gray" onClick={handleReset}>
+        <Button
+          radius="md"
+          variant="outline"
+          color="gray"
+          onClick={handleReset}
+        >
           Reset
         </Button>
       </Group>
@@ -187,9 +204,13 @@ const CubeNotations: React.FC = () => {
               <Box
                 key={itemIndex}
                 style={{
-                  width: isMobile ? "100%" : isTablet ? "calc(50% - 0.5rem)" : "calc(33.33% - 0.67rem)",
-                  minWidth: "250px",
+                  width: isMobile
+                    ? "100%"
+                    : isTablet
+                    ? "calc(50% - 0.5rem)"
+                    : "calc(33.33% - 0.67rem)",
                   maxWidth: "350px",
+                  justifyContent: "center",
                 }}
               >
                 <NotationCard {...item} />
