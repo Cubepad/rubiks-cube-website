@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   Box,
   Title,
@@ -53,7 +53,7 @@ const notationCategories: NotationCategory[] = [
   {
     title: "Double Moves",
     description:
-      "180-degree rotations of a single face, denoted by a '2' after the letter.",
+      "180-degree rotations of a single face, denoted by a '2' after the letter. Double Moves are considered a single move",
     notations: [
       { move: "R2", description: "Right face 180 degrees" },
       { move: "L2", description: "Left face 180 degrees" },
@@ -95,7 +95,7 @@ const notationCategories: NotationCategory[] = [
   },
 ];
 
-const NotationCard: React.FC<NotationItem> = ({ move, description }) => {
+const NotationCard = ({ move, description }: NotationItem) => {
   const playerRef = useRef<HTMLDivElement>(null);
   const twistyPlayerRef = useRef<TwistyPlayer | null>(null);
 
@@ -142,11 +142,11 @@ const NotationCard: React.FC<NotationItem> = ({ move, description }) => {
         ></div>
       </Card.Section>
       <Group gap="md" mt="md" mb="xs">
-        <Text className={classes.notationMove} fw={500} size="xl">
+        <Text className={classes.notationMove} fw={700} size="1.75rem">
           {move}
         </Text>
       </Group>
-      <Text size="sm" color="dimmed" mb="md">
+      <Text size="sm" mb="md">
         {description}
       </Text>
       <Group gap="sm">
@@ -166,7 +166,7 @@ const NotationCard: React.FC<NotationItem> = ({ move, description }) => {
   );
 };
 
-const CubeNotations: React.FC = () => {
+const CubeNotations = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const isTablet = useMediaQuery("(max-width: 1024px)");
 
@@ -179,6 +179,7 @@ const CubeNotations: React.FC = () => {
         style={{ fontSize: isMobile ? "2rem" : "2.75rem" }}
         className={classes.title}
         ta="center"
+        lts="-0.05em"
       >
         Rubik's Cube Move Notations
       </Title>
@@ -193,6 +194,7 @@ const CubeNotations: React.FC = () => {
             mb="md"
             style={{ fontSize: isMobile ? "1.75rem" : "2rem" }}
             className={classes.subHeading}
+            lts="-0.05em"
           >
             {category.title}
           </Title>
