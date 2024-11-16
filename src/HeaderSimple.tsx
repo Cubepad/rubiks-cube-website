@@ -1,16 +1,23 @@
-import { useState, useRef, useEffect } from 'react';
-import { Burger, Container, Flex, Button, ActionIcon, useMantineColorScheme } from "@mantine/core";
+import { useState, useRef, useEffect } from "react";
+import {
+  Burger,
+  Container,
+  Flex,
+  Button,
+  ActionIcon,
+  useMantineColorScheme,
+} from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
-import { IconSun, IconMoon } from '@tabler/icons-react';
-import classes from './HeaderSimple.module.css';
-import { ThemeLogo } from './ThemeLogo';
-import { Link, useLocation } from 'react-router-dom';
+import { IconSun, IconMoon } from "@tabler/icons-react";
+import classes from "./HeaderSimple.module.css";
+import { ThemeLogo } from "./ThemeLogo";
+import { Link, useLocation } from "react-router-dom";
 
 const links = [
   { link: "/", label: "Home" },
   { link: "/cube-basics", label: "Cube Basics" },
   { link: "/tutorials", label: "Tutorials" },
-  { link: "/timer", label: "Timer" }, 
+  { link: "/timer", label: "Timer" },
 ];
 
 export function HeaderSimple() {
@@ -27,8 +34,12 @@ export function HeaderSimple() {
   }, [location]);
 
   useEffect(() => {
-    const activeIndex = links.findIndex(link => link.link === activeTab);
-    if (activeIndex !== -1 && indicatorRef.current && linksRef.current[activeIndex]) {
+    const activeIndex = links.findIndex((link) => link.link === activeTab);
+    if (
+      activeIndex !== -1 &&
+      indicatorRef.current &&
+      linksRef.current[activeIndex]
+    ) {
       const activeLink = linksRef.current[activeIndex];
       indicatorRef.current.style.width = `${activeLink?.offsetWidth}px`;
       indicatorRef.current.style.height = `${activeLink?.offsetHeight}px`;
@@ -41,7 +52,7 @@ export function HeaderSimple() {
     <Link
       key={link.label}
       to={link.link}
-      ref={el => linksRef.current[index] = el}
+      ref={(el) => (linksRef.current[index] = el)}
       onClick={() => {
         if (isMobile) close();
         setActiveTab(link.link);
@@ -49,8 +60,11 @@ export function HeaderSimple() {
       className={classes.link}
       style={{
         fontWeight: isMobile ? 700 : 500,
-        fontSize: isMobile ? "1.5rem" : "1rem",
-        color: activeTab === link.link ? 'var(--mantine-color-blue-light-color)' : 'inherit',
+        fontSize: isMobile ? "2rem" : "1rem",
+        color:
+          activeTab === link.link
+            ? "var(--mantine-color-blue-light-color)"
+            : "inherit",
       }}
     >
       {link.label}
@@ -61,7 +75,7 @@ export function HeaderSimple() {
     <header
       className={classes.header}
       style={{
-        height: isMobile && opened ? "95%" : "4rem",
+        height: isMobile && opened ? "96.5%" : "4rem",
       }}
     >
       <Container
@@ -73,22 +87,8 @@ export function HeaderSimple() {
           height: "4rem",
         }}
       >
-        <Link
-          to="/"
-          style={{display: "inline-flex"}}
-        >
-          <ThemeLogo />
-        </Link>
-
-        {!isMobile && (
-          <Flex gap="sm" style={{ position: 'relative' }}>
-            {items}
-            <div ref={indicatorRef} className={classes.floatingIndicator} />
-          </Flex>
-        )}
-
-        {!isMobile ? (
-          <Flex align="center" gap="sm">
+        {isMobile ? (
+          <>
             <ActionIcon
               variant="default"
               onClick={() => toggleColorScheme()}
@@ -96,32 +96,16 @@ export function HeaderSimple() {
               title="Toggle color scheme"
               size="lg"
             >
-              {colorScheme === "dark" ? <IconSun size={22} /> : <IconMoon size={22} />}
+              {colorScheme === "dark" ? (
+                <IconSun size={18} />
+              ) : (
+                <IconMoon size={18} />
+              )}
             </ActionIcon>
 
-            <Button
-              component={Link}
-              to="/cube-basics"
-              size="sm"
-              radius="lg"
-              color="blue"
-              variant="gradient"
-              gradient={{ from: "blue", to: "indigo", deg: 90 }}
-            >
-              Start Learning
-            </Button>
-          </Flex>
-        ) : (
-          <Flex align="center" gap="sm">
-            <ActionIcon
-              variant="default"
-              onClick={() => toggleColorScheme()}
-              radius="md"
-              title="Toggle color scheme"
-              size="lg"
-            >
-              {colorScheme === "dark" ? <IconSun size={18} /> : <IconMoon size={18} />}
-            </ActionIcon>
+            <Link to="/" style={{ display: "inline-flex" }}>
+              <ThemeLogo />
+            </Link>
 
             <Burger
               opened={opened}
@@ -129,7 +113,43 @@ export function HeaderSimple() {
               size="sm"
               aria-label="Toggle navigation"
             />
-          </Flex>
+          </>
+        ) : (
+          <>
+            <Link to="/" style={{ display: "inline-flex" }}>
+              <ThemeLogo />
+            </Link>
+            <Flex gap="sm" style={{ position: "relative" }}>
+              {items}
+              <div ref={indicatorRef} className={classes.floatingIndicator} />
+            </Flex>
+            <Flex align="center" gap="sm">
+              <ActionIcon
+                variant="default"
+                onClick={() => toggleColorScheme()}
+                radius="md"
+                title="Toggle color scheme"
+                size="lg"
+              >
+                {colorScheme === "dark" ? (
+                  <IconSun size={22} />
+                ) : (
+                  <IconMoon size={22} />
+                )}
+              </ActionIcon>
+              <Button
+                component={Link}
+                to="/cube-basics"
+                size="sm"
+                radius="lg"
+                color="blue"
+                variant="gradient"
+                gradient={{ from: "blue", to: "indigo", deg: 90 }}
+              >
+                Start Learning
+              </Button>
+            </Flex>
+          </>
         )}
       </Container>
 
@@ -140,6 +160,7 @@ export function HeaderSimple() {
           gap="xl"
           style={{
             paddingTop: "1.5rem",
+            letterSpacing: "-0.05em",
           }}
         >
           {items}
@@ -152,7 +173,11 @@ export function HeaderSimple() {
             color="blue"
             variant="gradient"
             gradient={{ from: "indigo", to: "blue", deg: 90 }}
-            style={{ marginBottom: "1rem" }}
+            style={{
+              marginBottom: "1rem",
+              fontWeight: "700",
+              letterSpacing: "0",
+            }}
           >
             Start Learning
           </Button>
