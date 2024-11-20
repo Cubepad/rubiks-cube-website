@@ -406,7 +406,7 @@ export function Timer() {
         >
           {formatTime(time)}
         </Title>
-        {isHolding && <Text>Hold to start...</Text>}
+        {isHolding && <Text>Let go to start...</Text>}
       </Stack>
 
       <Flex className={classes.timeSectionContainer} justify="center" gap="xl">
