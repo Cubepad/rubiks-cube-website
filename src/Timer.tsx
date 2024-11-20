@@ -3,8 +3,10 @@ import {
   Button,
   Stack,
   Container,
+  Popover,
   Title,
   Text,
+  Anchor,
   CloseButton,
   Group,
   ActionIcon,
@@ -18,7 +20,9 @@ import {
   IconList,
   IconMath,
   IconTrash,
+  IconHelp,
 } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 import { LineChart } from "@mantine/charts";
 import { useMediaQuery } from "@mantine/hooks";
 import classes from "./Timer.module.css";
@@ -342,9 +346,35 @@ export function Timer() {
   return (
     <Container size="xl" style={{ marginTop: "8rem" }}>
       <Stack align="center" justify="center" style={{ marginBottom: "3.5rem" }}>
-        <Text size="xl" fw={700}>
-          {scramble}
-        </Text>
+        <Flex direction="row" align="center" gap="xs">
+          <Text size="xl" fw={700}>
+            {scramble}
+          </Text>
+          <Popover
+            width={220}
+            radius="md"
+            position="bottom"
+            withArrow
+            shadow="md"
+          >
+            <Popover.Target>
+              <ActionIcon variant="transparent" size="sm">
+                <IconHelp />
+              </ActionIcon>
+            </Popover.Target>
+            <Popover.Dropdown>
+              <Text size="sm">
+                This is the scramble to mix up the cube before a solve. Refer to
+                the{" "}
+                <Anchor component={Link} to="/cube-basics">
+                  Cube Basics
+                </Anchor>{" "}
+                section to learn how to read the notation. It should be
+                scrambled with green facing you and white on top.
+              </Text>
+            </Popover.Dropdown>
+          </Popover>
+        </Flex>
         <Group>
           <ActionIcon variant="transparent" size="sm" onClick={refreshScramble}>
             <IconRefresh />
