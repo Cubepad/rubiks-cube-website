@@ -61,7 +61,7 @@ export function Footer() {
 
   return (
     <div className={classes.footer}>
-      <Container className={classes.inner}>
+      <Container size="lg" className={classes.inner}>
         <div className={classes.logo}>
           <ThemeLogo />
           <Text size="xs" c="dimmed" className={classes.description}>
@@ -71,7 +71,7 @@ export function Footer() {
         </div>
         <div className={classes.groups}>{groups}</div>
       </Container>
-      <Container className={classes.afterFooter}>
+      <Container size="lg" className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
           © 2024 David Olaniyan. All rights reserved.
         </Text>
