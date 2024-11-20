@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /public/
+
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.svg
+
+# Add your sitemap here
+Sitemap: https://cubepad.pages.dev/sitemap.xml
