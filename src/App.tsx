@@ -7,7 +7,7 @@ import "@mantinex/mantine-logo/styles.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { HeaderSimple } from "./HeaderSimple";
 import { Hero } from "./Hero";
-import { MantineProvider, AppShell, Container } from "@mantine/core";
+import { MantineProvider, createTheme, AppShell, Container } from "@mantine/core";
 import { Footer } from "./Footer";
 import { WhyLearn } from "./WhyLearn";
 import { RubiksHistory } from "./RubiksHistory";
@@ -15,10 +15,18 @@ import { Timer } from "./Timer";
 import CubeNotations from "./CubeNotation";
 import CubeStructure from "./CubeStructure";
 import ScrollToTop from "./ScrollToTop";
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/700.css';
+
+const theme = createTheme({
+  fontFamily: 'Inter, sans-serif',
+  headings: { fontFamily: 'Inter, sans-serif' },
+});
 
 export default function App() {
   return (
-    <MantineProvider defaultColorScheme="auto">
+    <MantineProvider theme={theme} defaultColorScheme="auto">
       <Router>
         <ScrollToTop />
         <AppShell padding="md">
