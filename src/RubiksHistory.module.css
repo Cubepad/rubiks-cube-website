@@ -11,6 +11,10 @@
   letter-spacing: -0.05em;
 }
 
+.timelineText {
+  text-wrap: pretty;
+}
+
 @media (min-width: 768px) {
   .timelineTitle {
     font-size: 1.75rem;

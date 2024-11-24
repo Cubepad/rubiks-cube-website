@@ -1,5 +1,5 @@
 import { Container, Title, Text, Timeline } from "@mantine/core";
-import { IconClock, IconWorld, IconRocket, IconTrophy, IconCube, IconBuildingFactory, IconMagnet } from "@tabler/icons-react";
+import { IconClock, IconWorld, IconRocket, IconTrophy, IconCube, IconBolt, IconMagnet } from "@tabler/icons-react";
 import { useMediaQuery } from "@mantine/hooks";
 import classes from "./RubiksHistory.module.css";
 
@@ -49,7 +49,7 @@ export function RubiksHistory() {
           </Timeline.Item>
 
           <Timeline.Item
-            bullet={<IconBuildingFactory size={28} />}
+            bullet={<IconBolt size={28} />}
             title={<Title order={3} className={classes.timelineTitle}>2003 - Speedcubes Emerge</Title>}
           >
             <Text className={classes.timelineText}>The first speedcubes designed for competition started to appear, revolutionizing the sport.</Text>
@@ -73,7 +73,7 @@ export function RubiksHistory() {
             bullet={<IconTrophy size={28} />}
             title={<Title order={3} className={classes.timelineTitle}>2023 - Current World Record</Title>}
           >
-            <Text className={classes.timelineText}>Max Park set the current world record for single solve at 3.13 seconds on June 16th, 2023</Text>
+            <Text className={classes.timelineText}>Max Park set the current world record for single solve at 3.13 seconds on June 16th, 2023.</Text>
           </Timeline.Item>
         </Timeline>
       </Container>
