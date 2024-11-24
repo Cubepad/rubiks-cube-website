@@ -37,7 +37,7 @@ export function WhyLearn() {
       >
         Why Learn to Solve the Rubik's Cube?
       </Title>
-      <Text ta="center" size="lg" mx="auto" mb="xl" maw={700}>
+      <Text ta="center" size="lg" mx="auto" mb="xl" maw={700} style={{textWrap: "pretty"}}>
         Learning to solve the Rubik's Cube isn't just fun—it strengthens your
         mind, improves memory, and boosts problem-solving skills. Here's a quick
         look at some benefits!
