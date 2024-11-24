@@ -1,15 +1,15 @@
 // Hero.tsx
 
-import { Container, Text, Button, Box, Title, Flex } from "@mantine/core";
+import { Container, Text, Button, Paper, Box, Title, Flex } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import classes from './Hero.module.css'; // Import CSS module
+import classes from './Hero.module.css';
 
 export function Hero() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   return (
     <Container
-      size="lg"  // Expand to full viewport width
+      size="lg"  
       style={{
         display: "flex",
         alignItems: "center",
@@ -74,15 +74,15 @@ export function Hero() {
       </Box>
 
       {/* Right side - Placeholder div */}
-      <Box
+      <Paper
+      shadow="md" withBorder radius="lg"
         style={{
-          width: isMobile ? "100%" : "60%", // Increased width for larger screens
+          width: isMobile ? "100%" : "60%",
           height: "300px",
-          borderRadius: "16px",
-          backgroundColor: "#d9e2ec", // Light placeholder color
-          marginTop: "2rem", // Add spacing below text
+          marginTop: "2rem", 
         }}
-      />
+      >
+      </Paper>
     </Container>
   );
 }
