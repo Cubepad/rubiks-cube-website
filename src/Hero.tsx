@@ -1,11 +1,26 @@
-// Hero.tsx
-
 import { Container, Text, Button, Paper, Box, Title, Flex } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { useEffect, useRef } from "react";
+import { TwistyPlayer } from "cubing/twisty";
 import classes from './Hero.module.css';
 
 export function Hero() {
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const cubeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (cubeRef.current) {
+      cubeRef.current.innerHTML = "";
+      const player = new TwistyPlayer({
+        puzzle: "3x3x3",
+        alg: "none",
+        background: "none",
+        controlPanel: "none",
+        backView: "none",
+      });
+      cubeRef.current.appendChild(player);
+    }
+  }, []);
 
   return (
     <Container
@@ -20,7 +35,7 @@ export function Hero() {
       }}
     >
       {/* Left side - Text content */}
-      <Box style={{ maxWidth: isMobile ? "100%" : "75%"}}>  {/* Allow text content to use full width */}
+      <Box style={{ maxWidth: isMobile ? "100%" : "75%"}}>
         <Title
           className={classes.title}
           order={1}
@@ -49,9 +64,10 @@ export function Hero() {
           style={{
             fontSize: isMobile ? "1.25rem" : "1.5rem",
             marginTop: "1rem",
+            textWrap: "balance",
           }}
         >
-          Learn to solve the Rubik’s Cube step-by-step with easy-to-follow
+          Learn to solve the Rubik's Cube step-by-step with easy-to-follow
           tutorials and tips.
         </Title>
 
@@ -73,15 +89,21 @@ export function Hero() {
         </Flex>
       </Box>
 
-      {/* Right side - Placeholder div */}
+      {/* Right side - Cube display */}
       <Paper
-      shadow="md" withBorder radius="lg"
+        shadow="md"
+        withBorder
+        radius="lg"
         style={{
           width: isMobile ? "100%" : "60%",
           height: "300px",
-          marginTop: "2rem", 
+          marginTop: "2rem",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
+        <div ref={cubeRef}/>
       </Paper>
     </Container>
   );
