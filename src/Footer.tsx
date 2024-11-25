@@ -1,10 +1,10 @@
-import { Text, Container, ActionIcon, Group } from "@mantine/core";
+import { Text, Container, ActionIcon, Group, Anchor } from "@mantine/core";
 import {
   IconBrandTwitter,
   IconBrandYoutube,
   IconBrandInstagram,
 } from "@tabler/icons-react";
-import { ThemeLogo } from './ThemeLogo';
+import { ThemeLogo } from "./ThemeLogo";
 import classes from "./Footer.module.css";
 
 const data = [
@@ -73,7 +73,11 @@ export function Footer() {
       </Container>
       <Container size="lg" className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-          © 2024 David Olaniyan. All rights reserved.
+          © 2024 {" "}
+          <Anchor href="https://davidolaniyan.pages.dev" target="_blank">
+            David Olaniyan.
+          </Anchor>
+          {" "}All rights reserved.
         </Text>
 
         <Group
