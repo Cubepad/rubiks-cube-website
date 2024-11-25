@@ -18,7 +18,7 @@ import {
   IconRefresh,
   IconChartLine,
   IconList,
-  IconMath,
+  IconDeviceDesktopAnalytics,
   IconTrash,
   IconHelp,
 } from "@tabler/icons-react";
@@ -389,7 +389,7 @@ export function Timer() {
             variant="transparent"
             onClick={() => setShowAverages(!showAverages)}
           >
-            <IconMath />
+            <IconDeviceDesktopAnalytics />
           </ActionIcon>
           <ActionIcon
             variant="transparent"
