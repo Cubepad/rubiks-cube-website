@@ -6,6 +6,7 @@ import {
   Button,
   ActionIcon,
   useMantineColorScheme,
+  Tooltip,
 } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
 import { IconSun, IconMoon } from "@tabler/icons-react";
@@ -124,19 +125,20 @@ export function HeaderSimple() {
               <div ref={indicatorRef} className={classes.floatingIndicator} />
             </Flex>
             <Flex align="center" gap="sm">
-              <ActionIcon
-                variant="default"
-                onClick={() => toggleColorScheme()}
-                radius="md"
-                title="Toggle color scheme"
-                size="lg"
-              >
-                {colorScheme === "dark" ? (
-                  <IconSun size={22} />
-                ) : (
-                  <IconMoon size={22} />
-                )}
-              </ActionIcon>
+              <Tooltip label="Color Scheme">
+                <ActionIcon
+                  variant="default"
+                  onClick={() => toggleColorScheme()}
+                  radius="md"
+                  size="lg"
+                >
+                  {colorScheme === "dark" ? (
+                    <IconSun size={22} />
+                  ) : (
+                    <IconMoon size={22} />
+                  )}
+                </ActionIcon>
+              </Tooltip>
               <Button
                 component={Link}
                 to="/cube-basics"
