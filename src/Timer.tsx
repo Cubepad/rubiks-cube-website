@@ -13,6 +13,7 @@ import {
   Flex,
   Table,
   Card,
+  Tooltip,
 } from "@mantine/core";
 import {
   IconRefresh,
@@ -376,27 +377,35 @@ export function Timer() {
           </Popover>
         </Flex>
         <Group>
-          <ActionIcon variant="transparent" size="sm" onClick={refreshScramble}>
-            <IconRefresh />
-          </ActionIcon>
-          <ActionIcon
-            variant="transparent"
-            onClick={() => setShowList(!showList)}
-          >
-            <IconList />
-          </ActionIcon>
-          <ActionIcon
-            variant="transparent"
-            onClick={() => setShowAverages(!showAverages)}
-          >
-            <IconDeviceDesktopAnalytics />
-          </ActionIcon>
-          <ActionIcon
-            variant="transparent"
-            onClick={() => setShowChart(!showChart)}
-          >
-            <IconChartLine />
-          </ActionIcon>
+          <Tooltip label="Refresh Scramble">
+            <ActionIcon variant="transparent" size="sm" onClick={refreshScramble}>
+              <IconRefresh />
+            </ActionIcon>
+          </Tooltip>
+          <Tooltip label="Times List">
+            <ActionIcon
+              variant="transparent"
+              onClick={() => setShowList(!showList)}
+            >
+              <IconList />
+            </ActionIcon>
+          </Tooltip>
+          <Tooltip label="Statistics">
+            <ActionIcon
+              variant="transparent"
+              onClick={() => setShowAverages(!showAverages)}
+            >
+              <IconDeviceDesktopAnalytics />
+            </ActionIcon>
+          </Tooltip>
+          <Tooltip label="Graph">
+            <ActionIcon
+              variant="transparent"
+              onClick={() => setShowChart(!showChart)}
+            >
+              <IconChartLine />
+            </ActionIcon>
+          </Tooltip>
         </Group>
         <Title
           id="timer-display"
