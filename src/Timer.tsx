@@ -377,12 +377,12 @@ export function Timer() {
           </Popover>
         </Flex>
         <Group>
-          <Tooltip label="Refresh Scramble">
+          <Tooltip radius="md" label="Refresh Scramble">
             <ActionIcon variant="transparent" size="sm" onClick={refreshScramble}>
               <IconRefresh />
             </ActionIcon>
           </Tooltip>
-          <Tooltip label="Times List">
+          <Tooltip radius="md" label="Times List">
             <ActionIcon
               variant="transparent"
               onClick={() => setShowList(!showList)}
@@ -390,7 +390,7 @@ export function Timer() {
               <IconList />
             </ActionIcon>
           </Tooltip>
-          <Tooltip label="Statistics">
+          <Tooltip radius="md" label="Statistics">
             <ActionIcon
               variant="transparent"
               onClick={() => setShowAverages(!showAverages)}
@@ -398,7 +398,7 @@ export function Timer() {
               <IconDeviceDesktopAnalytics />
             </ActionIcon>
           </Tooltip>
-          <Tooltip label="Graph">
+          <Tooltip radius="md" label="Graph">
             <ActionIcon
               variant="transparent"
               onClick={() => setShowChart(!showChart)}

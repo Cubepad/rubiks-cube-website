@@ -125,7 +125,7 @@ export function HeaderSimple() {
               <div ref={indicatorRef} className={classes.floatingIndicator} />
             </Flex>
             <Flex align="center" gap="sm">
-              <Tooltip zIndex={1001} label="Color Scheme">
+              <Tooltip radius="md" zIndex={1001} label="Color Scheme">
                 <ActionIcon
                   variant="default"
                   onClick={() => toggleColorScheme()}
