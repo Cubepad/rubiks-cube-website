@@ -14,14 +14,15 @@ import { RubiksHistory } from "./RubiksHistory";
 import { Timer } from "./Timer";
 import CubeNotations from "./CubeNotation";
 import CubeStructure from "./CubeStructure";
+import CrossStep from "./CrossStep";
 import ScrollToTop from "./ScrollToTop";
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/700.css';
 
 const theme = createTheme({
-  fontFamily: 'Inter, sans-serif',
-  headings: { fontFamily: 'Inter, sans-serif' },
+  fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
+  headings: { fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji' },
 });
 
 export default function App() {
@@ -58,6 +59,14 @@ export default function App() {
                   <>
                     <CubeStructure />
                     <CubeNotations />
+                  </>
+                }
+              />
+              <Route 
+                path="/tutorials" 
+                element={
+                  <>
+                    <CrossStep />
                   </>
                 }
               />
