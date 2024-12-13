@@ -15,6 +15,7 @@ import { Timer } from "./Timer";
 import CubeNotations from "./CubeNotation";
 import CubeStructure from "./CubeStructure";
 import CrossStep from "./CrossStep";
+import RLAlg from "./RLAlg.tsx";
 import ScrollToTop from "./ScrollToTop";
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
@@ -67,6 +68,14 @@ export default function App() {
                 element={
                   <>
                     <CrossStep />
+                  </>
+                }
+              />
+              <Route 
+                path="/f2l" 
+                element={
+                  <>
+                    <RLAlg />
                   </>
                 }
               />

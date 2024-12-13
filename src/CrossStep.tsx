@@ -216,6 +216,7 @@ const CrossStep = () => {
         <Pagination
           radius="md"
           total={3}
+          value={1}
           mt="xl"
           onChange={(page) => {
             if (page === 2) {
