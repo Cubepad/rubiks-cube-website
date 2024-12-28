@@ -16,6 +16,8 @@ import CubeNotations from "./CubeNotation";
 import CubeStructure from "./CubeStructure";
 import CrossStep from "./CrossStep";
 import RLAlg from "./RLAlg.tsx";
+import RLExplanation from "./RLExplanation.tsx"
+import F2lEdges from "./F2LEdges.tsx";
 import ScrollToTop from "./ScrollToTop";
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
@@ -76,6 +78,8 @@ export default function App() {
                 element={
                   <>
                     <RLAlg />
+                    <RLExplanation />
+                    <F2lEdges />
                   </>
                 }
               />
