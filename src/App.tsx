@@ -7,25 +7,39 @@ import "@mantinex/mantine-logo/styles.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { HeaderSimple } from "./HeaderSimple";
 import { Hero } from "./Hero";
-import { MantineProvider, createTheme, AppShell, Container } from "@mantine/core";
+import {
+  MantineProvider,
+  createTheme,
+  AppShell,
+  Container,
+} from "@mantine/core";
 import { Footer } from "./Footer";
 import { WhyLearn } from "./WhyLearn";
 import { RubiksHistory } from "./RubiksHistory";
 import { Timer } from "./Timer";
+
 import CubeNotations from "./CubeNotation";
 import CubeStructure from "./CubeStructure";
+
 import CrossStep from "./CrossStep";
+
 import RLAlg from "./RLAlg.tsx";
-import RLExplanation from "./RLExplanation.tsx"
+import RLExplanation from "./RLExplanation.tsx";
 import F2lEdges from "./F2LEdges.tsx";
+
+import YellowCross from "./YellowCross.tsx";
 import ScrollToTop from "./ScrollToTop";
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/700.css';
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/700.css";
 
 const theme = createTheme({
-  fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji',
-  headings: { fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji' },
+  fontFamily:
+    "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji",
+  headings: {
+    fontFamily:
+      "Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji",
+  },
 });
 
 export default function App() {
@@ -56,8 +70,8 @@ export default function App() {
                 }
               />
               <Route path="/timer" element={<Timer />} />
-              <Route 
-                path="/cube-basics" 
+              <Route
+                path="/cube-basics"
                 element={
                   <>
                     <CubeStructure />
@@ -65,21 +79,29 @@ export default function App() {
                   </>
                 }
               />
-              <Route 
-                path="/tutorials" 
+              <Route
+                path="/tutorials"
                 element={
                   <>
                     <CrossStep />
                   </>
                 }
               />
-              <Route 
-                path="/f2l" 
+              <Route
+                path="/f2l"
                 element={
                   <>
                     <RLAlg />
                     <RLExplanation />
                     <F2lEdges />
+                  </>
+                }
+              />
+              <Route
+                path="/last-layer"
+                element={
+                  <>
+                    <YellowCross />
                   </>
                 }
               />

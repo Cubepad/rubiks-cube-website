@@ -92,7 +92,7 @@ const RLExplanation = () => {
   };
 
   return (
-    <Container size="lg" className={classes.container}>
+    <Container size="lg">
       <Title
         order={3}
         mb="xs"
