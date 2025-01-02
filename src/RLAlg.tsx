@@ -155,12 +155,11 @@ const RLAlg = () => {
             align={isMobile ? "center" : "flex-start"}
             style={{ flex: 1 }}
           >
-            <Card shadow="sm" radius="lg" withBorder style={{ width: "100%" }}>
+            <Card shadow="sm" radius="lg" withBorder style={{ width: "100%", justifyContent: "center", alignItems: "center"  }}>
               <div
                 ref={index === 0 ? rightyPlayerRef : leftyPlayerRef}
                 style={{
-                  width: "100%",
-                  height: "300px",
+                  width: "300px",
                   display: "flex",
                   justifyContent: "center",
                 }}

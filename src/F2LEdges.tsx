@@ -8,6 +8,8 @@ import {
   Button,
   List,
   Flex,
+  Group,
+  Pagination,
 } from "@mantine/core";
 import { TwistyPlayer } from "cubing/twisty";
 import { useMediaQuery } from "@mantine/hooks";
@@ -19,31 +21,26 @@ interface EdgeStep {
   detailedExplanation: string[];
 }
 
-const edgeScramble = "z2";
+const edgeScrambleRight = "F2 U B2 D2 U' F2 D2 B2 R2 D B2 U' L D L2 F2 R D' U B z2 y2 F' L R' D R' D U2 L' U' L R U R' y' U2 L' U' L y L' U' L y R U' R' U R U R' y2 U2";
+const edgeScrambleLeft = "F2 U B2 D2 U' F2 D2 B2 R2 D B2 U' L D L2 F2 R D' U B z2 y2 F' L R' D R' D U2 L' U' L R U R' y' U2 L' U' L y L' U' L y R U' R' U R U R' y2 U2 U R U R' U' y L' U' L y2 L' U' L U F U F' y U";
 
 const edgeSteps: EdgeStep[] = [
   {
-    alg: "U R U' R' U' F' U F",
+    alg: "U R U R' U' y L' U' L",
     description: "Edge goes right",
     detailedExplanation: [
       "Turn the top layer clockwise (U).",
       "Perform the righty algorithm (R U R' U').",
-      "Turn the front face counterclockwise (F').",
-      "Turn the top layer counterclockwise (U').",
-      "Turn the front face clockwise (F).",
-      "Reinsert the white corner piece.",
+      "Insert the white corner piece back to its spot. (L' U' L)",
     ],
   },
   {
-    alg: "U' L' U L U F U' F'",
+    alg: "U' L' U' L U y' R U R' U'",
     description: "Edge goes left",
     detailedExplanation: [
       "Turn the top layer counterclockwise (U').",
       "Perform the lefty algorithm (L' U' L U).",
-      "Turn the front face clockwise (F).",
-      "Turn the top layer clockwise (U).",
-      "Turn the front face counterclockwise (F').",
-      "Reinsert the white corner piece.",
+      "Insert the white corner piece back to its spot. (R U R' U')",
     ],
   },
 ];
@@ -65,7 +62,7 @@ const F2LEdges = () => {
       const rightEdgePlayer = new TwistyPlayer({
         puzzle: "3x3x3",
         alg: edgeSteps[0].alg,
-        experimentalSetupAlg: edgeScramble,
+        experimentalSetupAlg: edgeScrambleRight,
         hintFacelets: "none",
         backView: "none",
         background: "none",
@@ -78,7 +75,7 @@ const F2LEdges = () => {
       const leftEdgePlayer = new TwistyPlayer({
         puzzle: "3x3x3",
         alg: edgeSteps[1].alg,
-        experimentalSetupAlg: edgeScramble,
+        experimentalSetupAlg: edgeScrambleLeft,
         hintFacelets: "none",
         backView: "none",
         background: "none",
@@ -140,7 +137,8 @@ const F2LEdges = () => {
         Solving the F2L Edges
       </Title>
       <Text className={classes.description} ta="center" mb="xl">
-        After solving the corners, follow these steps to solve the edges of the first two layers.
+        After solving the corners, follow these steps to solve the edges of the
+        first two layers.
       </Text>
       <Flex
         gap="xl"
@@ -157,12 +155,11 @@ const F2LEdges = () => {
             align={isMobile ? "center" : "flex-start"}
             style={{ flex: 1 }}
           >
-            <Card shadow="sm" radius="lg" withBorder style={{ width: "100%" }}>
+            <Card shadow="sm" radius="lg" withBorder style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
               <div
                 ref={index === 0 ? rightEdgePlayerRef : leftEdgePlayerRef}
                 style={{
-                  width: "100%",
-                  height: "300px",
+                  width: "300px",
                   display: "flex",
                   justifyContent: "center",
                 }}
@@ -171,15 +168,19 @@ const F2LEdges = () => {
                 <Button
                   radius="md"
                   variant="light"
-                  onClick={index === 0 ? handlePlayRightEdge : handlePlayLeftEdge}
+                  onClick={
+                    index === 0 ? handlePlayRightEdge : handlePlayLeftEdge
+                  }
                   mr="xs"
                   color={
-                    (index === 0 && isPlayingRightEdge) || (index === 1 && isPlayingLeftEdge)
+                    (index === 0 && isPlayingRightEdge) ||
+                    (index === 1 && isPlayingLeftEdge)
                       ? "red"
                       : "blue"
                   }
                 >
-                  {(index === 0 && isPlayingRightEdge) || (index === 1 && isPlayingLeftEdge)
+                  {(index === 0 && isPlayingRightEdge) ||
+                  (index === 1 && isPlayingLeftEdge)
                     ? "Stop"
                     : "Play"}
                 </Button>
@@ -206,6 +207,21 @@ const F2LEdges = () => {
           </Flex>
         ))}
       </Flex>
+      <Group justify="center">
+        <Pagination
+          radius="md"
+          total={3}
+          value={2}
+          mt="xl"
+          onChange={(page) => {
+            if (page === 1) {
+              window.location.href = "/cross";
+            } else if (page === 3) {
+              window.location.href = "/last-layer";
+            }
+          }}
+        />
+      </Group>
     </Container>
   );
 };
