@@ -12,7 +12,7 @@ import {
 } from "@mantine/core";
 import { TwistyPlayer } from "cubing/twisty";
 import { useMediaQuery } from "@mantine/hooks";
-import classes from "./F2LStep.module.css";
+import classes from "./CrossStep.module.css";
 
 interface CornerStep {
   alg: string;

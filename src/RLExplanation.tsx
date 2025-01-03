@@ -11,7 +11,7 @@ import {
   Button,
 } from "@mantine/core";
 import { TwistyPlayer } from "cubing/twisty";
-import classes from "./F2LStep.module.css";
+import classes from "./CrossStep.module.css";
 
 const scramble =
   "R' F' B2 R2 D' U R B' F2 R' B F B2 D B2 D' R2 B' F2 R2 F L' U F' L' U' R U D F' R F z2 y2 L' U' L y2";

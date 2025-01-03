@@ -12,7 +12,7 @@ import {
 } from "@mantine/core";
 import { TwistyPlayer } from "cubing/twisty";
 import { useMediaQuery } from "@mantine/hooks";
-import classes from "./F2LStep.module.css";
+import classes from "./CrossStep.module.css";
 
 interface CrossStep {
   alg: string;
@@ -176,7 +176,7 @@ const YellowCross = () => {
         Creating the Yellow Cross
       </Title>
       <Group justify="center" mb="xl">
-        <Text className={classes.description} ta="center" style={{ maxWidth: "800px", }}>
+        <Text ta="center" style={{ maxWidth: "800px", }}>
           The next goal is to form a yellow cross on the top face. If you already have a yellow cross, you can move on to the next step. Otherwise, focus only on the yellow edge pieces and follow one of these scenarios:
         </Text>
       </Group>
