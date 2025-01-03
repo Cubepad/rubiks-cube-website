@@ -1,10 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "@mantine/hooks";
-import { Container, Title, Text, Card, Flex, Box, List, Button } from "@mantine/core";
+import {
+  Container,
+  Title,
+  Text,
+  Card,
+  Flex,
+  Box,
+  List,
+  Button,
+} from "@mantine/core";
 import { TwistyPlayer } from "cubing/twisty";
 import classes from "./F2LStep.module.css";
 
-const scramble = "R' F' B2 R2 D' U R B' F2 R' B F B2 D B2 D' R2 B' F2 R2 F L' U F' L' U' R U D F' R F z2 y2 L' U' L y2";
+const scramble =
+  "R' F' B2 R2 D' U R B' F2 R' B F B2 D B2 D' R2 B' F2 R2 F L' U F' L' U' R U D F' R F z2 y2 L' U' L y2";
 
 const steps = [
   {
@@ -27,7 +37,8 @@ const steps = [
   },
   {
     alg: "R U R' U' R U R' U' R U R' U'",
-    setupAlg: "R' F' B2 R2 D' U R B' F2 R' B F B2 D B2 D' R2 B' F2 R2 F L' U F' L' U' R U D F' R F z2 y2 U", // Different setup alg for the third case
+    setupAlg:
+      "R' F' B2 R2 D' U R B' F2 R' B F B2 D B2 D' R2 B' F2 R2 F L' U F' L' U' R U D F' R F z2 y2 U", // Different setup alg for the third case
     description: "Case 3: White faces up",
     detailedExplanation: [
       "Hold the corner to the right (in this case it's the red blue corner).",
@@ -37,8 +48,16 @@ const steps = [
 ];
 const RLExplanation = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const playerRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)];
-  const twistyPlayerRefs = [useRef<TwistyPlayer | null>(null), useRef<TwistyPlayer | null>(null), useRef<TwistyPlayer | null>(null)];
+  const playerRefs = [
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+  ];
+  const twistyPlayerRefs = [
+    useRef<TwistyPlayer | null>(null),
+    useRef<TwistyPlayer | null>(null),
+    useRef<TwistyPlayer | null>(null),
+  ];
   const [isPlaying, setIsPlaying] = useState([false, false, false]);
 
   const initializePlayers = () => {
@@ -105,7 +124,8 @@ const RLExplanation = () => {
         Using Righty and Lefty Algorithms
       </Title>
       <Text className={classes.description} ta="center" mb="xl">
-        Learn how to position the white corners correctly using the righty and lefty algorithms.
+        Learn how to position the white corners correctly using the righty and
+        lefty algorithms.
       </Text>
       <Flex
         gap="xl"
@@ -115,7 +135,14 @@ const RLExplanation = () => {
         style={{ maxWidth: "100%", margin: "0 auto" }}
       >
         {steps.map((step, index) => (
-          <Box key={index} style={{ flex: '1 1 300px', maxWidth: '400px', marginBottom: '2rem' }}>
+          <Box
+            key={index}
+            style={{
+              flex: "1 1 300px",
+              maxWidth: "400px",
+              marginBottom: "2rem",
+            }}
+          >
             <Card shadow="sm" radius="lg" withBorder>
               <div
                 ref={playerRefs[index]}
@@ -157,11 +184,12 @@ const RLExplanation = () => {
           </Box>
         ))}
       </Flex>
-      <Text className={classes.description} ta="center" mt="sm">
-        If no white corners are in the top layer, find a white corner in the bottom layer, hold it to the right, and perform a Righty Algorithm.
+      <Text ta="center" mt="sm">
+        If no white corners are in the top layer, find a white corner in the
+        bottom layer, hold it to the right, and perform a Righty Algorithm.
       </Text>
     </Container>
-  );  
+  );
 };
 
 export default RLExplanation;

@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { TwistyPlayer } from "cubing/twisty";
 import { useMediaQuery } from "@mantine/hooks";
-import classes from "./F2LStep.module.css";
+import classes from "./CrossStep.module.css";
 
 interface Step {
   alg: string;
@@ -125,7 +125,7 @@ const RLAlg = () => {
   };
 
   return (
-    <Container size="xl" className={classes.container}>
+    <Container size="xl">
       <Title
         order={2}
         mb="xs"
@@ -137,7 +137,7 @@ const RLAlg = () => {
       >
         Solving the First Two Layers (F2L)
       </Title>
-      <Text className={classes.description} ta="center" mb="xl">
+      <Text ta="center" mb="xl">
         Before solving the rest of the cube, you need to learn these two important algorithms.
       </Text>
       <Flex

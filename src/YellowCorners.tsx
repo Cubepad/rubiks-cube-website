@@ -21,8 +21,10 @@ interface CornerStep {
 }
 
 const cornerScrambleNiklas = "z2 r U R' U' r' F R F'  r U R' U' r' F R F'";
-const cornerScrambleCase1 = "z2 R U' R' U' R U R D R' U' R D' R' U2 R' U' R U2 R' U' R U' R' U2 R U R' U R U2' R' U' R U R' U R U2' R' x R' U R' D2 R U' R' D2 R2 x' ";
-const cornerScrambleCase2 = "z2 R U' R' U' R U R D R' U' R D' R' U2 R' U' R U2 R' U' R U' R' U2 R U R' U R U2' R' U' R U R' U R U2' R'";
+const cornerScrambleCase1 =
+  "z2 R U' R' U' R U R D R' U' R D' R' U2 R' U' R U2 R' U' R U' R' U2 R U R' U R U2' R' U' R U R' U R U2' R' x R' U R' D2 R U' R' D2 R2 x' ";
+const cornerScrambleCase2 =
+  "z2 R U' R' U' R U R D R' U' R D' R' U2 R' U' R U2 R' U' R U' R' U2 R U R' U R U2' R' U' R U R' U R U2' R'";
 
 const cornerSteps: CornerStep[] = [
   {
@@ -68,7 +70,11 @@ const YellowCorners = () => {
   const [isPlayingCase2, setIsPlayingCase2] = useState(false);
 
   const initializeCornerPlayers = () => {
-    if (niklasPlayerRef.current && case1PlayerRef.current && case2PlayerRef.current) {
+    if (
+      niklasPlayerRef.current &&
+      case1PlayerRef.current &&
+      case2PlayerRef.current
+    ) {
       niklasPlayerRef.current.innerHTML = "";
       case1PlayerRef.current.innerHTML = "";
       case2PlayerRef.current.innerHTML = "";
@@ -178,8 +184,9 @@ const YellowCorners = () => {
         Solving the Yellow Corners
       </Title>
       <Group mb="xl" justify="center">
-        <Text className={classes.description} ta="center" style={{ maxWidth: "600px" }}>
-          Now, we need to place the yellow corners in their correct positions. To adjust the corners, we’ll use an algorithm called "Niklas."
+        <Text ta="center" style={{ maxWidth: "600px" }}>
+          Now, we need to place the yellow corners in their correct positions.
+          To adjust the corners, we’ll use an algorithm called "Niklas."
         </Text>
       </Group>
       <Flex
@@ -188,12 +195,17 @@ const YellowCorners = () => {
         justify="center"
         mb="xl"
       >
-        <Flex
-          gap="xl"
-          direction={isMobile ? "column" : "row"}
-          align="center"
-        >
-          <Card shadow="sm" radius="lg" withBorder style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+        <Flex gap="xl" direction={isMobile ? "column" : "row"} align="center">
+          <Card
+            shadow="sm"
+            radius="lg"
+            withBorder
+            style={{
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <div
               ref={niklasPlayerRef}
               style={{
@@ -248,7 +260,16 @@ const YellowCorners = () => {
             align={isMobile ? "center" : "flex-start"}
             style={{ flex: 1 }}
           >
-            <Card shadow="sm" radius="lg" withBorder style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+            <Card
+              shadow="sm"
+              radius="lg"
+              withBorder
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <div
                 ref={index === 0 ? case1PlayerRef : case2PlayerRef}
                 style={{
@@ -268,7 +289,7 @@ const YellowCorners = () => {
                     (index === 1 && isPlayingCase2)
                       ? "red"
                       : "blue"
-                }
+                  }
                 >
                   {(index === 0 && isPlayingCase1) ||
                   (index === 1 && isPlayingCase2)

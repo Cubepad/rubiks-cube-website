@@ -100,7 +100,6 @@ const FinalStep = () => {
       </Title>
       <Group mb="xl" justify="center">
         <Text
-          className={classes.description}
           ta="center"
           style={{ maxWidth: "800px", textWrap: "balance" }}
         >

@@ -120,7 +120,7 @@ const CrossStep = () => {
   };
 
   return (
-    <Container size="xl" className={classes.container}>
+    <Container size="xl">
       <Title
         order={2}
         mb="xs"
@@ -132,7 +132,7 @@ const CrossStep = () => {
       >
         Solving the Cross
       </Title>
-      <Text className={classes.description} ta="center" mb="xl">
+      <Text ta="center" mb="xl">
         Master the foundational step of solving the Rubik's Cube: the white cross.
       </Text>
       <Grid>

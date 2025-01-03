@@ -124,7 +124,7 @@ const F2LEdges = () => {
   };
 
   return (
-    <Container size="xl" className={classes.container}>
+    <Container size="xl">
       <Title
         order={3}
         mb="xs"
@@ -136,7 +136,7 @@ const F2LEdges = () => {
       >
         Solving the F2L Edges
       </Title>
-      <Text className={classes.description} ta="center" mb="xl">
+      <Text ta="center" mb="xl">
         After solving the corners, follow these steps to solve the edges of the
         first two layers.
       </Text>
