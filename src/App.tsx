@@ -28,6 +28,10 @@ import RLExplanation from "./RLExplanation.tsx";
 import F2lEdges from "./F2LEdges.tsx";
 
 import YellowCross from "./YellowCross.tsx";
+import YellowEdges from "./YellowEdges.tsx";
+import YellowCorners from "./YellowCorners.tsx"
+import FinalStep from "./FinalStep.tsx";
+
 import ScrollToTop from "./ScrollToTop";
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
@@ -102,6 +106,9 @@ export default function App() {
                 element={
                   <>
                     <YellowCross />
+                    <YellowEdges />
+                    <YellowCorners />
+                    <FinalStep />
                   </>
                 }
               />

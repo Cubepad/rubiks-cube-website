@@ -185,6 +185,7 @@ const YellowCross = () => {
         direction={isMobile ? "column" : "row"}
         justify="space-between"
         align="stretch"
+        flex-wrap="wrap"
         style={{ maxWidth: "100%", margin: "0 auto" }}
       >
         {crossSteps.map((step, index) => (
