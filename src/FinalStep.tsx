@@ -165,7 +165,7 @@ const FinalStep = () => {
           mt="xl"
           onChange={(page) => {
             if (page === 1) {
-              window.location.href = "/cross";
+              window.location.href = "/tutorials";
             } else if (page === 2) {
               window.location.href = "/f2l";
             }

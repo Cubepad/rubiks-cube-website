@@ -215,7 +215,7 @@ const F2LEdges = () => {
           mt="xl"
           onChange={(page) => {
             if (page === 1) {
-              window.location.href = "/cross";
+              window.location.href = "/tutorials";
             } else if (page === 3) {
               window.location.href = "/last-layer";
             }
