@@ -11,6 +11,7 @@ import {
   Grid,
   Group,
 } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
 import { TwistyPlayer } from "cubing/twisty";
 import { useMediaQuery } from "@mantine/hooks";
 import classes from "./CrossStep.module.css";
@@ -32,10 +33,9 @@ const steps: Step[] = [
       "Think of the cross as the foundation for solving the rest of the cube. Once the cross is solved, the cube becomes easier to navigate because key pieces are in their correct positions.",
       "The goal is to form a 'plus' sign with the white edges around the white center on the bottom face while also ensuring the other side colors of these edge pieces match their respective centers.",
       "To achieve this, you'll use simple moves to position and orient the edges one at a time, keeping the cube organized as you go.",
-      "Remember, solving the cross efficiently can save you time and effort in later steps, so practice is key!"
     ],
   },
-  
+
   {
     alg: "F L' U",
     description: "Position and insert the first white edge",
@@ -76,7 +76,7 @@ const steps: Step[] = [
       "Then, we can bring it to the middle layer by turning the front face counterclockwise (F), this will move one of the white edges but we will reinsert it",
       "We can insert the red edge now using by turning the right face clockwise (R)",
       "Finally, move the white green edge back by turning the front clockwise (F)",
-      "Remember, when you're done, flip the cube so that white center is on the bottom, and all the white edges should be forming a cross, and each edge should match the center color on its side.",
+      "Once you're done, flip the cube so that white center is on the bottom, and all the white edges should be forming a cross, and each edge should match the center color on its side.",
     ],
   },
 ];
@@ -86,11 +86,17 @@ const CrossStep = () => {
   const twistyPlayerRef = useRef<TwistyPlayer | null>(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [currentStep, setCurrentStep] = useState(0);
-  const [stickeringMode, setStickeringMode] = useState<"full" | "Daisy">("full");
+  const [stickeringMode, setStickeringMode] = useState<"full" | "Daisy">(
+    "full"
+  );
+  const navigate = useNavigate();
 
   const getSetupAlg = (stepIndex: number) => {
     // Combine all previous steps' algorithms into a setup algorithm.
-    return steps.slice(0, stepIndex).map((step) => step.alg).join(" ");
+    return steps
+      .slice(0, stepIndex)
+      .map((step) => step.alg)
+      .join(" ");
   };
 
   useEffect(() => {
@@ -133,7 +139,8 @@ const CrossStep = () => {
         Solving the Cross
       </Title>
       <Text ta="center" mb="xl">
-        Master the foundational step of solving the Rubik's Cube: the white cross.
+        Master the foundational step of solving the Rubik's Cube: the white
+        cross.
       </Text>
       <Grid>
         <Grid.Col span={isMobile ? 12 : 6}>
@@ -159,7 +166,9 @@ const CrossStep = () => {
                 zIndex: 10,
               }}
               onClick={() =>
-                setStickeringMode((prev) => (prev === "full" ? "Daisy" : "full"))
+                setStickeringMode((prev) =>
+                  prev === "full" ? "Daisy" : "full"
+                )
               }
             >
               {stickeringMode === "full" ? "Cross" : "Full"}
@@ -193,7 +202,9 @@ const CrossStep = () => {
               <Button
                 radius="md"
                 variant="light"
-                onClick={() => setCurrentStep(Math.min(steps.length - 1, currentStep + 1))}
+                onClick={() =>
+                  setCurrentStep(Math.min(steps.length - 1, currentStep + 1))
+                }
                 disabled={currentStep === steps.length - 1}
               >
                 Next Step
@@ -220,9 +231,9 @@ const CrossStep = () => {
           mt="xl"
           onChange={(page) => {
             if (page === 2) {
-              window.location.href = "/f2l";
+              navigate("/3x3/f2l");
             } else if (page === 3) {
-              window.location.href = "/last-layer";
+              navigate("/3x3/last-layer");
             }
           }}
         />

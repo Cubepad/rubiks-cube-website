@@ -4,7 +4,7 @@ import "@mantine/carousel/styles.css";
 import "@mantine/nprogress/styles.css";
 import "@mantinex/mantine-logo/styles.css";
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Outlet } from "react-router-dom";
 import { HeaderSimple } from "./HeaderSimple";
 import { Hero } from "./Hero";
 import {
@@ -21,7 +21,8 @@ import { Timer } from "./Timer";
 import CubeNotations from "./CubeNotation";
 import CubeStructure from "./CubeStructure";
 
-import CrossStep from "./CrossStep";
+import Tutorials from "./Tutorials.tsx";
+import CrossStep from "./CrossStep.tsx";
 
 import RLAlg from "./RLAlg.tsx";
 import RLExplanation from "./RLExplanation.tsx";
@@ -63,55 +64,31 @@ export default function App() {
             }}
           >
             <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <Hero />
-                    <WhyLearn />
-                    <RubiksHistory />
-                  </>
-                }
-              />
+              <Route path="/" element={<>
+                <Hero />
+                <WhyLearn />
+                <RubiksHistory />
+              </>} />
               <Route path="/timer" element={<Timer />} />
-              <Route
-                path="/cube-basics"
-                element={
-                  <>
-                    <CubeStructure />
-                    <CubeNotations />
-                  </>
-                }
-              />
-              <Route
-                path="/tutorials"
-                element={
-                  <>
-                    <CrossStep />
-                  </>
-                }
-              />
-              <Route
-                path="/f2l"
-                element={
-                  <>
-                    <RLAlg />
-                    <RLExplanation />
-                    <F2lEdges />
-                  </>
-                }
-              />
-              <Route
-                path="/last-layer"
-                element={
-                  <>
-                    <YellowCross />
-                    <YellowEdges />
-                    <YellowCorners />
-                    <FinalStep />
-                  </>
-                }
-              />
+              <Route path="/cube-basics" element={<>
+                <CubeStructure />
+                <CubeNotations />
+              </>} />
+              <Route path="/tutorials" element={<Tutorials />} />
+              <Route path="/3x3" element={<Outlet />}>
+                <Route path="cross" element={<CrossStep />} />
+                <Route path="f2l" element={<>
+                  <RLAlg />
+                  <RLExplanation />
+                  <F2lEdges />
+                </>} />
+                <Route path="last-layer" element={<>
+                  <YellowCross />
+                  <YellowEdges />
+                  <YellowCorners />
+                  <FinalStep />
+                </>} />
+              </Route>
             </Routes>
           </AppShell.Main>
           <AppShell.Footer style={{ zIndex: "-1", border: "none" }}>

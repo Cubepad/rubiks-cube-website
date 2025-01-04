@@ -11,6 +11,7 @@ import {
   Group,
   Pagination,
 } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
 import { TwistyPlayer } from "cubing/twisty";
 import { useMediaQuery } from "@mantine/hooks";
 import classes from "./CrossStep.module.css";
@@ -21,8 +22,10 @@ interface EdgeStep {
   detailedExplanation: string[];
 }
 
-const edgeScrambleRight = "F2 U B2 D2 U' F2 D2 B2 R2 D B2 U' L D L2 F2 R D' U B z2 y2 F' L R' D R' D U2 L' U' L R U R' y' U2 L' U' L y L' U' L y R U' R' U R U R' y2 U2";
-const edgeScrambleLeft = "F2 U B2 D2 U' F2 D2 B2 R2 D B2 U' L D L2 F2 R D' U B z2 y2 F' L R' D R' D U2 L' U' L R U R' y' U2 L' U' L y L' U' L y R U' R' U R U R' y2 U2 U R U R' U' y L' U' L y2 L' U' L U F U F' y U";
+const edgeScrambleRight =
+  "F2 U B2 D2 U' F2 D2 B2 R2 D B2 U' L D L2 F2 R D' U B z2 y2 F' L R' D R' D U2 L' U' L R U R' y' U2 L' U' L y L' U' L y R U' R' U R U R' y2 U2";
+const edgeScrambleLeft =
+  "F2 U B2 D2 U' F2 D2 B2 R2 D B2 U' L D L2 F2 R D' U B z2 y2 F' L R' D R' D U2 L' U' L R U R' y' U2 L' U' L y L' U' L y R U' R' U R U R' y2 U2 U R U R' U' y L' U' L y2 L' U' L U F U F' y U";
 
 const edgeSteps: EdgeStep[] = [
   {
@@ -53,6 +56,7 @@ const F2LEdges = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [isPlayingRightEdge, setIsPlayingRightEdge] = useState(false);
   const [isPlayingLeftEdge, setIsPlayingLeftEdge] = useState(false);
+  const navigate = useNavigate();
 
   const initializeEdgePlayers = () => {
     if (rightEdgePlayerRef.current && leftEdgePlayerRef.current) {
@@ -155,7 +159,16 @@ const F2LEdges = () => {
             align={isMobile ? "center" : "flex-start"}
             style={{ flex: 1 }}
           >
-            <Card shadow="sm" radius="lg" withBorder style={{ width: "100%", justifyContent: "center", alignItems: "center" }}>
+            <Card
+              shadow="sm"
+              radius="lg"
+              withBorder
+              style={{
+                width: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <div
                 ref={index === 0 ? rightEdgePlayerRef : leftEdgePlayerRef}
                 style={{
@@ -215,9 +228,9 @@ const F2LEdges = () => {
           mt="xl"
           onChange={(page) => {
             if (page === 1) {
-              window.location.href = "/tutorials";
+              navigate("/3x3/cross");
             } else if (page === 3) {
-              window.location.href = "/last-layer";
+              navigate("/3x3/last-layer");
             }
           }}
         />

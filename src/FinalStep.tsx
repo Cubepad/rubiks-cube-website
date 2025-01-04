@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Title,
@@ -43,6 +44,7 @@ const FinalStep = () => {
   const finalTwistyPlayerRef = useRef<TwistyPlayer | null>(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [isPlayingFinal, setIsPlayingFinal] = useState(false);
+  const navigate = useNavigate();
 
   const initializeFinalPlayer = () => {
     if (finalPlayerRef.current) {
@@ -99,10 +101,7 @@ const FinalStep = () => {
         Final Step: Solving the Yellow Corners
       </Title>
       <Group mb="xl" justify="center">
-        <Text
-          ta="center"
-          style={{ maxWidth: "800px", textWrap: "balance" }}
-        >
+        <Text ta="center" style={{ maxWidth: "800px", textWrap: "balance" }}>
           The last step is to fix the corners and complete the cube! This part
           requires attention to detail—just follow each move carefully, and
           don’t worry if the cube appears messy during the process. As long as
@@ -165,9 +164,9 @@ const FinalStep = () => {
           mt="xl"
           onChange={(page) => {
             if (page === 1) {
-              window.location.href = "/tutorials";
+              navigate("/3x3/cross");
             } else if (page === 2) {
-              window.location.href = "/f2l";
+              navigate("/3x3/f2l");
             }
           }}
         />
