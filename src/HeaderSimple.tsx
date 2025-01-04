@@ -30,8 +30,17 @@ export function HeaderSimple() {
   const indicatorRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
+  const isTutorialPage = (path: string): boolean => {
+    return path.startsWith("/3x3/") || path === "/tutorials";
+  };
+
   useEffect(() => {
-    setActiveTab(location.pathname);
+    const currentPath = location.pathname;
+    if (isTutorialPage(currentPath)) {
+      setActiveTab("/tutorials");
+    } else {
+      setActiveTab(currentPath);
+    }
   }, [location]);
 
   useEffect(() => {
@@ -63,6 +72,7 @@ export function HeaderSimple() {
         fontWeight: isMobile ? 700 : 500,
         fontSize: isMobile ? "2rem" : "1rem",
         color:
+          (link.link === "/tutorials" && isTutorialPage(location.pathname)) ||
           activeTab === link.link
             ? "var(--mantine-color-blue-light-color)"
             : "inherit",
