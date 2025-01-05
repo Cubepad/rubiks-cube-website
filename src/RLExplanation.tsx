@@ -1,16 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { useMediaQuery } from "@mantine/hooks";
-import {
-  Container,
-  Title,
-  Text,
-  Card,
-  Flex,
-  Box,
-  List,
-  Button,
-} from "@mantine/core";
-import { TwistyPlayer } from "cubing/twisty";
+import {useEffect, useRef, useState} from "react";
+import {useMediaQuery} from "@mantine/hooks";
+import {Box, Button, Card, Container, Flex, List, Text, Title,} from "@mantine/core";
+import {TwistyPlayer} from "cubing/twisty";
 import classes from "./CrossStep.module.css";
 
 const scramble =
@@ -171,7 +162,7 @@ const RLExplanation = () => {
                 </Button>
               </Box>
             </Card>
-            <Box mt="md" ta="left">
+            <Box style={{maxWidth: "90%",}} mt="md" ta="left">
               <Text fw={700} size="xl" mb="md">
                 {step.description}
               </Text>

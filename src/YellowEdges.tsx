@@ -1,17 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Title,
-  Text,
-  Card,
-  Container,
-  Button,
-  List,
-  Flex,
-  Group,
-} from "@mantine/core";
-import { TwistyPlayer } from "cubing/twisty";
-import { useMediaQuery } from "@mantine/hooks";
+import {useEffect, useRef, useState} from "react";
+import {Box, Button, Card, Container, Flex, Group, List, Text, Title,} from "@mantine/core";
+import {TwistyPlayer} from "cubing/twisty";
+import {useMediaQuery} from "@mantine/hooks";
 import classes from "./CrossStep.module.css";
 
 interface EdgeStep {
@@ -352,7 +342,7 @@ const YellowEdges = () => {
               </Box>
             </Card>
 
-            <Box>
+            <Box style={{maxWidth: "90%",}}>
               <Text fw={700} size="xl" mb="md">
                 {step.description}
               </Text>

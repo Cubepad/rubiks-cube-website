@@ -1,17 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Title,
-  Text,
-  Card,
-  Container,
-  Button,
-  List,
-  Flex,
-  Group,
-} from "@mantine/core";
-import { TwistyPlayer } from "cubing/twisty";
-import { useMediaQuery } from "@mantine/hooks";
+import {useEffect, useRef, useState} from "react";
+import {Box, Button, Card, Container, Flex, Group, List, Text, Title,} from "@mantine/core";
+import {TwistyPlayer} from "cubing/twisty";
+import {useMediaQuery} from "@mantine/hooks";
 import classes from "./CrossStep.module.css";
 
 interface CrossStep {
@@ -185,7 +175,7 @@ const YellowCross = () => {
         direction={isMobile ? "column" : "row"}
         justify="space-between"
         align="stretch"
-        flex-wrap="wrap"
+        wrap="wrap"
         style={{ maxWidth: "100%", margin: "0 auto" }}
       >
         {crossSteps.map((step, index) => (
@@ -235,7 +225,7 @@ const YellowCross = () => {
               </Box>
             </Card>
 
-            <Box>
+            <Box style={{maxWidth: "90%",}}>
               <Text fw={700} size="xl" mb="md">
                 {step.description}
               </Text>
