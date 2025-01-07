@@ -79,6 +79,7 @@
 
   @media (max-width: $mantine-breakpoint-sm) {
     flex-direction: column;
+    gap: var(--mantine-spacing-md);
   }
 }
 

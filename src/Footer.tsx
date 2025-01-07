@@ -1,51 +1,45 @@
-import { Text, Container, ActionIcon, Group, Anchor } from "@mantine/core";
-import {
-  IconBrandTwitter,
-  IconBrandYoutube,
-  IconBrandInstagram,
-} from "@tabler/icons-react";
+import { Text, Container, Button, CopyButton, Anchor } from "@mantine/core";
+import { IconCopy, IconCheck } from "@tabler/icons-react";
 import { ThemeLogo } from "./ThemeLogo";
 import classes from "./Footer.module.css";
+import { useNavigate } from "react-router-dom";
 
 const data = [
   {
-    title: "About",
+    title: "General",
     links: [
-      { label: "Features", link: "#" },
-      { label: "Pricing", link: "#" },
-      { label: "Support", link: "#" },
-      { label: "Forums", link: "#" },
+      { label: "Cube Basics", link: "/cube-basics" },
+      { label: "Why Learn", link: "/why-learn" },
     ],
   },
   {
-    title: "Project",
+    title: "Tutorials",
     links: [
-      { label: "Contribute", link: "#" },
-      { label: "Media assets", link: "#" },
-      { label: "Changelog", link: "#" },
-      { label: "Releases", link: "#" },
+      { label: "Cross", link: "/3x3/cross" },
+      { label: "F2L", link: "/3x3/f2l" },
+      { label: "Last Layer", link: "/3x3/last-layer" },
     ],
   },
   {
-    title: "Community",
-    links: [
-      { label: "Join Discord", link: "#" },
-      { label: "Follow on Twitter", link: "#" },
-      { label: "Email newsletter", link: "#" },
-      { label: "GitHub discussions", link: "#" },
-    ],
+    title: "Tools",
+    links: [{ label: "Solve Timer", link: "/timer" }],
   },
 ];
 
 export function Footer() {
+  const navigate = useNavigate();
+
   const groups = data.map((group) => {
     const links = group.links.map((link, index) => (
       <Text<"a">
         key={index}
         className={classes.link}
         component="a"
-        href={link.link}
-        onClick={(event) => event.preventDefault()}
+        onClick={(e) => {
+          e.preventDefault();
+          navigate(link.link);
+        }}
+        style={{ cursor: "pointer" }}
       >
         {link.label}
       </Text>
@@ -73,44 +67,28 @@ export function Footer() {
       </Container>
       <Container size="lg" className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-          © 2025 {" "}
+          © 2025{" "}
           <Anchor href="https://davidolaniyan.pages.dev" target="_blank">
             David Olaniyan.
-          </Anchor>
-          {" "}All rights reserved.
+          </Anchor>{" "}
+          All rights reserved.
         </Text>
 
-        <Group
-          gap="1rem"
-          className={classes.social}
-          justify="flex-end"
-          wrap="nowrap"
-        >
-          <ActionIcon
-            size="lg"
-            variant="gradient"
-            radius="md"
-            gradient={{ from: "blue", to: "indigo", deg: 90 }}
-          >
-            <IconBrandTwitter size={18} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon
-            size="lg"
-            variant="gradient"
-            radius="md"
-            gradient={{ from: "blue", to: "indigo", deg: 90 }}
-          >
-            <IconBrandYoutube size={18} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon
-            size="lg"
-            variant="gradient"
-            radius="md"
-            gradient={{ from: "blue", to: "indigo", deg: 90 }}
-          >
-            <IconBrandInstagram size={18} stroke={1.5} />
-          </ActionIcon>
-        </Group>
+        <CopyButton value="davideniola108@gmail.com" timeout={1000}>
+          {({ copied, copy }) => (
+            <Button
+              leftSection={
+                copied ? <IconCheck size={14} /> : <IconCopy size={14} />
+              }
+              radius="md"
+              variant="light"
+              onClick={copy}
+              color={copied ? "teal" : "blue"}
+            >
+              {copied ? "Copied!" : "davideniola108@gmail.com"}
+            </Button>
+          )}
+        </CopyButton>
       </Container>
     </div>
   );
