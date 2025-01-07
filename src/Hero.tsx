@@ -1,8 +1,17 @@
-import { Container, Text, Button, Paper, Box, Title, Flex } from "@mantine/core";
+import {
+  Container,
+  Text,
+  Button,
+  Paper,
+  Box,
+  Title,
+  Flex,
+} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useEffect, useRef } from "react";
 import { TwistyPlayer } from "cubing/twisty";
-import classes from './Hero.module.css';
+import { Link } from "react-router-dom";
+import classes from "./Hero.module.css";
 
 export function Hero() {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -24,7 +33,7 @@ export function Hero() {
 
   return (
     <Container
-      size="lg"  
+      size="lg"
       style={{
         display: "flex",
         alignItems: "center",
@@ -35,7 +44,7 @@ export function Hero() {
       }}
     >
       {/* Left side - Text content */}
-      <Box style={{ maxWidth: isMobile ? "100%" : "75%"}}>
+      <Box style={{ maxWidth: isMobile ? "100%" : "75%" }}>
         <Title
           className={classes.title}
           order={1}
@@ -46,7 +55,7 @@ export function Hero() {
             fontSize: isMobile ? "2.75rem" : "4.5rem",
           }}
         >
-          Your{' '}
+          Your{" "}
           <Text
             component="span"
             inherit
@@ -54,8 +63,8 @@ export function Hero() {
             gradient={{ from: "blue", to: "indigo", deg: 90 }}
           >
             Landing Pad
-          </Text>{' '}
-          For Rubik's Cube Mastery 
+          </Text>{" "}
+          For Rubik's Cube Mastery
         </Title>
 
         <Title
@@ -78,6 +87,8 @@ export function Hero() {
           }}
         >
           <Button
+            component={Link}
+            to="/tutorials"
             size="xl"
             radius="lg"
             color="blue"
@@ -103,7 +114,7 @@ export function Hero() {
           alignItems: "center",
         }}
       >
-        <div ref={cubeRef}/>
+        <div ref={cubeRef} />
       </Paper>
     </Container>
   );
