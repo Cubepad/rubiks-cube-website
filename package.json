@@ -17,15 +17,16 @@
     "@mantine/hooks": "^7.13.4",
     "@mantine/nprogress": "^7.13.4",
     "@mantinex/mantine-logo": "^1.0.1",
+    "@react-buddy/ide-toolbox": "^2.4.0",
     "@tabler/icons-react": "^3.21.0",
     "cubing": "^0.53.4",
     "cubing.js": "^0.0.3",
     "embla-carousel-react": "^7.1.0",
+    "framer-motion": "^11.16.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",
-    "recharts": "^2.13.3",
-    "@react-buddy/ide-toolbox": "^2.4.0"
+    "recharts": "^2.13.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

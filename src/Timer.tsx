@@ -67,7 +67,7 @@ interface SolveTime {
   originalTime: number;
 }
 
-export function Timer() {
+export default function Timer() {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [scramble, setScramble] = useState(generateScramble());

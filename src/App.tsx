@@ -15,8 +15,9 @@ import {
 } from "@mantine/core";
 import { Footer } from "./Footer";
 import { WhyLearn } from "./WhyLearn";
+import  WhyLearnExtended  from "./WhyLearnExtended";
 import { RubiksHistory } from "./RubiksHistory";
-import { Timer } from "./Timer";
+import  Timer  from "./Timer";
 
 import CubeNotations from "./CubeNotation";
 import CubeStructure from "./CubeStructure";
@@ -70,6 +71,7 @@ export default function App() {
                 <RubiksHistory />
               </>} />
               <Route path="/timer" element={<Timer />} />
+              <Route path="/why-learn" element={<WhyLearnExtended />} />
               <Route path="/cube-basics" element={<>
                 <CubeStructure />
                 <CubeNotations />
