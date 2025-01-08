@@ -19,6 +19,7 @@ import {
 } from "@tabler/icons-react";
 import classes from "./WhyLearn.module.css"; // Import CSS module
 import { useMediaQuery } from "@mantine/hooks";
+import { Link } from "react-router-dom"
 
 export function WhyLearn() {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -182,6 +183,8 @@ export function WhyLearn() {
           variant="gradient"
           gradient={{ from: "blue", to: "indigo", deg: 90 }}
           leftSection={<IconInfoCircle size={20} />}
+          component={Link}
+          to="/why-learn"
         >
           Learn More
         </Button>
