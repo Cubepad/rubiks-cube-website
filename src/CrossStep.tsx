@@ -184,9 +184,11 @@ const CrossStep = () => {
             />
           </Card>
           <Box mt="md" ta="center">
-            <Button radius="md" variant="light" onClick={handlePlay} mb="md">
-              Play
-            </Button>
+            {steps[currentStep].alg && (
+              <Button radius="md" variant="light" onClick={handlePlay} mb="md">
+                Play
+              </Button>
+            )}
             <Text>
               Step {currentStep + 1} of {steps.length}
             </Text>
