@@ -74,7 +74,7 @@ export function Footer() {
           All rights reserved.
         </Text>
 
-        <CopyButton value="davideniola108@gmail.com" timeout={1000}>
+        <CopyButton value="davideniola108@gmail.com" timeout={2000}>
           {({ copied, copy }) => (
             <Button
               leftSection={
