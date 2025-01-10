@@ -80,7 +80,7 @@ export default function App() {
               <Route path="/tutorials" element={<Tutorials />} />
               <Route path="/3x3" element={<Outlet />}>
                 <Route path="cross" element={<CrossStep />} />
-                <Route path="f2l" element={<>
+                <Route path="lbl" element={<>
                   <RLAlg />
                   <RLExplanation />
                   <F2lEdges />

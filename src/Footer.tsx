@@ -16,7 +16,7 @@ const data = [
     title: "Tutorials",
     links: [
       { label: "Cross", link: "/3x3/cross" },
-      { label: "F2L", link: "/3x3/f2l" },
+      { label: "LBL", link: "/3x3/lbl" },
       { label: "Last Layer", link: "/3x3/last-layer" },
     ],
   },

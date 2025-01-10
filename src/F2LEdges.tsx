@@ -172,7 +172,7 @@ const F2LEdges = () => {
         ta="center"
         lts="-0.05em"
       >
-        Solving the F2L Edges
+        Solving the Second Layer's Edges
       </Title>
       <Text ta="center" mb="xl">
         After solving the corners, follow these steps to solve the edges of the

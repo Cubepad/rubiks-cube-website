@@ -135,7 +135,7 @@ const RLAlg = () => {
         ta="center"
         lts="-0.05em"
       >
-        Solving the First Two Layers (F2L)
+        Solving the First Two Layers, Layer by Layer (LBL)
       </Title>
       <Text ta="center" mb="xl">
         Before solving the rest of the cube, you need to learn these two important algorithms.

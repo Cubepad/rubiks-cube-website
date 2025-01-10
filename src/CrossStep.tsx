@@ -233,7 +233,7 @@ const CrossStep = () => {
           mt="xl"
           onChange={(page) => {
             if (page === 2) {
-              navigate("/3x3/f2l");
+              navigate("/3x3/lbl");
             } else if (page === 3) {
               navigate("/3x3/last-layer");
             }

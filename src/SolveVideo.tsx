@@ -53,7 +53,7 @@ const FinalStep = () => {
             if (page === 1) {
               navigate("/3x3/cross");
             } else if (page === 2) {
-              navigate("/3x3/f2l");
+              navigate("/3x3/lbl");
             }
           }}
         />
