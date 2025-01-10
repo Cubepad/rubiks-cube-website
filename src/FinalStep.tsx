@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Box,
   Title,
@@ -10,7 +9,6 @@ import {
   List,
   Flex,
   Group,
-  Pagination,
 } from "@mantine/core";
 import { TwistyPlayer } from "cubing/twisty";
 import { useMediaQuery } from "@mantine/hooks";
@@ -44,7 +42,6 @@ const FinalStep = () => {
   const finalTwistyPlayerRef = useRef<TwistyPlayer | null>(null);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [isPlayingFinal, setIsPlayingFinal] = useState(false);
-  const navigate = useNavigate();
 
   const initializeFinalPlayer = () => {
     if (finalPlayerRef.current) {
@@ -156,21 +153,6 @@ const FinalStep = () => {
           </Box>
         </Flex>
       </Flex>
-      <Group justify="center">
-        <Pagination
-          radius="md"
-          total={3}
-          value={3}
-          mt="xl"
-          onChange={(page) => {
-            if (page === 1) {
-              navigate("/3x3/cross");
-            } else if (page === 2) {
-              navigate("/3x3/f2l");
-            }
-          }}
-        />
-      </Group>
     </Container>
   );
 };

@@ -33,6 +33,7 @@ import YellowCross from "./YellowCross.tsx";
 import YellowEdges from "./YellowEdges.tsx";
 import YellowCorners from "./YellowCorners.tsx"
 import FinalStep from "./FinalStep.tsx";
+import SolveVideo from "./SolveVideo.tsx";
 
 import ScrollToTop from "./ScrollToTop";
 import "@fontsource/inter/400.css";
@@ -89,6 +90,7 @@ export default function App() {
                   <YellowEdges />
                   <YellowCorners />
                   <FinalStep />
+                  <SolveVideo />
                 </>} />
               </Route>
             </Routes>
