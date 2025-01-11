@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Title, Text, Container, Group, Pagination } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import ReactPlayer from 'react-player';
 import classes from "./CrossStep.module.css";
 import video from "./assets/solve-video.mp4";
 
@@ -28,17 +29,14 @@ const SolveVideo = () => {
         </Text>
       </Group>
 
-      {/* Add the video element here */}
       <Group justify="center" mb="xl">
-        <video
+        <ReactPlayer
+          url={video}
           width="100%"
-          className={classes.solveVideo}
           height="auto"
-          controls
-        >
-          <source src={video} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          controls={true}
+          className={classes.solveVideo}
+        />
       </Group>
 
       <Group justify="center">
