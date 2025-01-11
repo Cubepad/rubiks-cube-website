@@ -18,14 +18,12 @@ const FinalStep = () => {
         ta="center"
         lts="-0.05em"
       >
-        Final Step: Solving the Yellow Corners
+        Example Solve
       </Title>
       <Group mb="xl" justify="center">
         <Text ta="center" style={{ maxWidth: "800px", textWrap: "balance" }}>
-          The last step is to fix the corners and complete the cube! This part
-          requires attention to detail—just follow each move carefully, and
-          don't worry if the cube appears messy during the process. As long as
-          you focus on one corner at a time, everything will fall into place.
+        If the steps from the tutorial aren't clear, you can watch the
+        example solve below to see how it's done.
         </Text>
       </Group>
 
