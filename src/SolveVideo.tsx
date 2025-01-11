@@ -3,7 +3,7 @@ import { Title, Text, Container, Group, Pagination } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import ReactPlayer from 'react-player';
 import classes from "./CrossStep.module.css";
-import video from "./assets/solve-video.mp4";
+import video from "/solve-video.mp4";
 
 const SolveVideo = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");

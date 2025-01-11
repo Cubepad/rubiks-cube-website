@@ -2,16 +2,3 @@
 .subHeading {
   color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
 }
-
-.solveVideo {
-  border: light-dark(
-    1px solid var(--mantine-color-gray-3),
-    1px solid var(--mantine-color-dark-4)
-  );
-  border-radius: 1.25rem;
-  box-shadow: var(--mantine-shadow-sm);
-  
-  @media (max-width: $mantine-breakpoint-sm) {
-    border-radius: 0.75rem;
-  }
-}
