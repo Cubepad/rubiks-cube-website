@@ -1,16 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { Title, Text, Container, Group, Pagination } from "@mantine/core";
+import {
+  Title,
+  Text,
+  Container,
+  Group,
+  Pagination,
+} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import ReactPlayer from 'react-player';
 import classes from "./CrossStep.module.css";
-import video from "/solve-video.mp4";
 
-const SolveVideo = () => {
+const FinalStep = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const navigate = useNavigate();
 
   return (
-    <Container size="md">
+    <Container size="lg">
       <Title
         order={3}
         mb="xs"
@@ -20,23 +24,22 @@ const SolveVideo = () => {
         ta="center"
         lts="-0.05em"
       >
-        Example Solve
+        Final Step: Solving the Yellow Corners
       </Title>
       <Group mb="xl" justify="center">
         <Text ta="center" style={{ maxWidth: "800px", textWrap: "balance" }}>
-          If if the steps from the tutorial aren't clear, you can watch the
-          example solve below to see how it's done.
+          The last step is to fix the corners and complete the cube! This part
+          requires attention to detail—just follow each move carefully, and
+          don't worry if the cube appears messy during the process. As long as
+          you focus on one corner at a time, everything will fall into place.
         </Text>
       </Group>
-
+      
       <Group justify="center" mb="xl">
-        <ReactPlayer
-          url={video}
-          width="100%"
-          height="auto"
-          controls={true}
-          className={classes.solveVideo}
-        />
+          <video width="100%" height="auto" controls>
+            <source src="/solve-video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
       </Group>
 
       <Group justify="center">
@@ -58,4 +61,4 @@ const SolveVideo = () => {
   );
 };
 
-export default SolveVideo;
+export default FinalStep;
