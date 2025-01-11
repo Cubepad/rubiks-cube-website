@@ -1,11 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import {
-  Title,
-  Text,
-  Container,
-  Group,
-  Pagination,
-} from "@mantine/core";
+import { Title, Text, Container, Group, Pagination, Box } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import classes from "./CrossStep.module.css";
 
@@ -34,12 +28,21 @@ const FinalStep = () => {
           you focus on one corner at a time, everything will fall into place.
         </Text>
       </Group>
-      
+
       <Group justify="center" mb="xl">
-          <video width="100%" height="auto" controls>
-            <source src="/solve-video.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        <Box
+          style={{ width: "100%", maxWidth: "800px", aspectRatio: "16 / 9", border: "none" }}
+        >
+          <iframe
+            width="100%"
+            height="100%"
+            src={`https://www.youtube.com/embed/q67D8J4ynkk`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="Solve Video"
+            className={classes.solveVideo}
+          />
+        </Box>
       </Group>
 
       <Group justify="center">
