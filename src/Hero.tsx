@@ -43,7 +43,6 @@ export function Hero() {
         gap: "2rem",
       }}
     >
-      {/* Left side - Text content */}
       <Box style={{ maxWidth: isMobile ? "100%" : "75%" }}>
         <Title
           className={classes.title}
@@ -88,7 +87,7 @@ export function Hero() {
         >
           <Button
             component={Link}
-            to="/tutorials"
+            to="/cube-basics"
             size="xl"
             radius="lg"
             color="blue"
@@ -100,7 +99,6 @@ export function Hero() {
         </Flex>
       </Box>
 
-      {/* Right side - Cube display */}
       <Paper
         shadow="md"
         withBorder
