@@ -184,7 +184,8 @@ const CubeNotations = () => {
         Rubik's Cube Move Notations
       </Title>
       <Text className={classes.description} ta="center" mb="xl">
-        These notations are used to turn the cube and read algorithms
+        Rubik's Cube notation is a system used to describe the movements of the cube's faces. Each face of the cube is represented by a letter, and specific symbols indicate how to rotate
+        These notations are used to turn the cube and read algorithms.
       </Text>
       {notationCategories.map((category, index) => (
         <Box key={index} mb="xl">
