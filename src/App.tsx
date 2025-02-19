@@ -15,9 +15,9 @@ import {
 } from "@mantine/core";
 import { Footer } from "./Footer";
 import { WhyLearn } from "./WhyLearn";
-import  WhyLearnExtended  from "./WhyLearnExtended";
+import WhyLearnExtended from "./WhyLearnExtended";
 import { RubiksHistory } from "./RubiksHistory";
-import  Timer  from "./Timer";
+import Timer from "./Timer";
 
 import CubeNotations from "./CubeNotation";
 import CubeStructure from "./CubeStructure";
@@ -36,6 +36,8 @@ import FinalStep from "./FinalStep.tsx";
 import SolveVideo from "./SolveVideo.tsx";
 
 import ScrollToTop from "./ScrollToTop";
+import NotFoundPage from "./404Page.tsx";  // Import the 404 page component
+
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/700.css";
@@ -93,6 +95,8 @@ export default function App() {
                   <SolveVideo />
                 </>} />
               </Route>
+              {/* 404 Page Route */}
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </AppShell.Main>
           <AppShell.Footer style={{ zIndex: "-1", border: "none" }}>
