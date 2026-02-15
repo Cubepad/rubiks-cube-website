@@ -71,9 +71,9 @@ export function RubiksHistory() {
 
           <Timeline.Item
             bullet={<IconTrophy size={28} />}
-            title={<Title order={3} className={classes.timelineTitle}>2025 - Current World Record</Title>}
+            title={<Title order={3} className={classes.timelineTitle}>2026 - Current World Record</Title>}
           >
-            <Text className={classes.timelineText}>Xuanyi Geng set the current world record for single solve at 3.05 seconds on April 13th, 2025.</Text>
+            <Text className={classes.timelineText}>Teodor Zajder set the current world record for single solve at 2.76 seconds on February 8th, 2026.</Text>
           </Timeline.Item>
         </Timeline>
       </Container>
