@@ -68,7 +68,7 @@ export function Footer() {
       <Container size="lg" className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
           © 2025{" "}
-          <Anchor href="https://davidolaniyan.pages.dev" target="_blank">
+          <Anchor href="https://davidolaniyan.com" target="_blank">
             David Olaniyan.
           </Anchor>{" "}
           All rights reserved.
