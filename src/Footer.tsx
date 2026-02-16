@@ -67,7 +67,7 @@ export function Footer() {
       </Container>
       <Container size="lg" className={classes.afterFooter}>
         <Text c="dimmed" size="sm">
-          © 2025{" "}
+          © 2026{" "}
           <Anchor href="https://davidolaniyan.com" target="_blank">
             David Olaniyan.
           </Anchor>{" "}
